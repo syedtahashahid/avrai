@@ -3,7 +3,7 @@
    Updated with Official Avari Azure / Light Blue Brand Identity (#027CFF)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 :root {
   /* Official Avari Light Blue Palette */
@@ -42,9 +42,9 @@
   --border-blue: rgba(2, 124, 255, 0.25);
 
   /* Fonts */
-  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-serif: 'Bodoni Moda', Georgia, serif;
   --font-cormorant: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Transitions */
   --transition: all 0.25s ease-in-out;
@@ -73,9 +73,9 @@ body {
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
-  font-weight: 600;
+  font-weight: 500;
   color: #0F172A;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
 }
 
 a {
@@ -122,7 +122,7 @@ a {
   font-family: var(--font-serif);
   font-size: 1.55rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.09em;
   color: #0F172A;
   text-transform: uppercase;
   line-height: 1.1;
@@ -608,6 +608,833 @@ a {
   gap: 40px;
   margin: 40px 0;
   box-shadow: 0 10px 30px rgba(2, 124, 255, 0.08);
+}
+
+/* -------------------------------------------------------------
+   GOLD CARD MEMBERSHIP AND EXPERIENCES
+   ------------------------------------------------------------- */
+
+.home-gold-band {
+  width: 100%;
+  min-height: 480px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  background: #17130e;
+  color: #f7ebd0;
+}
+
+.home-gold-band-image {
+  min-height: 480px;
+  background: linear-gradient(90deg, rgba(23, 19, 14, 0.08), rgba(23, 19, 14, 0.9)), url('/images/gold-card/avari-gold-hero-banner.jpg') center / cover;
+}
+
+.home-gold-band-content {
+  align-self: center;
+  max-width: 620px;
+  padding: 70px 8vw 70px 54px;
+}
+
+.home-gold-band-content h2,
+.home-gold-band-content p,
+.home-gold-band-content small {
+  color: #f7ebd0;
+}
+
+.home-gold-band-content h2 {
+  max-width: 440px;
+  margin: 12px 0 18px;
+  font-family: var(--font-cormorant);
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  font-weight: 500;
+  line-height: 0.98;
+}
+
+.home-gold-band-content p {
+  max-width: 470px;
+  color: #d1c3a7;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.home-gold-band-actions,
+.gold-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.home-gold-band-content small {
+  display: block;
+  margin-top: 26px;
+  color: #a8987a;
+  font-size: 0.72rem;
+}
+
+.home-gold-button,
+.gold-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid #d5aa52;
+  background: #d5aa52;
+  color: #20170b;
+  padding: 13px 21px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  transition: 240ms ease;
+}
+
+.home-gold-button:hover,
+.gold-primary-button:hover {
+  background: #f0ce81;
+  border-color: #f0ce81;
+  transform: translateY(-2px);
+}
+
+.home-gold-text-link,
+.gold-quiet-link,
+.gold-outline-button,
+.festival-link,
+.account-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #d5aa52;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home-gold-text-link:hover,
+.gold-quiet-link:hover,
+.festival-link:hover,
+.account-back-link:hover {
+  color: #f0ce81;
+}
+
+.gold-experience-page,
+.festival-detail-page {
+  min-height: 100vh;
+  background: #15120f;
+  color: #f7ebd0;
+}
+
+.gold-experience-page .site-header {
+  background: #17130e;
+  border-bottom-color: rgba(213, 170, 82, 0.22);
+}
+
+.gold-experience-page .brand-title,
+.gold-experience-page .nav-item-link {
+  color: #f7ebd0;
+}
+
+.gold-experience-page .brand-subtitle,
+.gold-experience-page .header-top-bar span,
+.gold-experience-page .header-nav-bar > div {
+  color: #a8987a;
+}
+
+.gold-experience-page .nav-item-link:hover,
+.gold-experience-page .nav-item-link.active {
+  color: #d5aa52;
+  border-bottom-color: #d5aa52;
+}
+
+.gold-hero {
+  position: relative;
+  min-height: 760px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.gold-hero-image {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(13, 10, 7, 0.92) 0%, rgba(13, 10, 7, 0.44) 48%, rgba(13, 10, 7, 0.16) 100%), url('/images/gold-card/avari-gold-hero-banner.jpg') center / cover;
+}
+
+.gold-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  padding: 100px 8vw 110px;
+}
+
+.gold-kicker,
+.gold-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #d5aa52;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.gold-hero h1,
+.gold-intro-section h2,
+.gold-section-heading h2,
+.gold-showcase-copy h2,
+.gold-festival-cta h2 {
+  font-family: var(--font-cormorant);
+  font-weight: 500;
+  line-height: 0.98;
+}
+
+.gold-hero h1 {
+  max-width: 620px;
+  margin: 20px 0;
+  color: #fff4db;
+  font-size: clamp(4rem, 9vw, 8.5rem);
+}
+
+.gold-hero p {
+  max-width: 550px;
+  color: #dfd1b5;
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.gold-disclaimer {
+  margin-top: 30px;
+  color: #a8987a !important;
+  font-size: 0.75rem !important;
+}
+
+.gold-intro-section,
+.gold-benefits-section,
+.gold-tiers-section {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 115px 42px;
+}
+
+.gold-intro-section {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 80px;
+  align-items: end;
+}
+
+.gold-intro-section h2,
+.gold-section-heading h2,
+.gold-showcase-copy h2,
+.gold-festival-cta h2 {
+  margin-top: 14px;
+  color: #fff4db;
+  font-size: clamp(2.7rem, 5vw, 5.2rem);
+}
+
+.gold-intro-section p,
+.gold-showcase-copy p,
+.gold-festival-cta p {
+  color: #b9ab91;
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.gold-benefits-section,
+.gold-tiers-section {
+  border-top: 1px solid rgba(213, 170, 82, 0.2);
+}
+
+.gold-benefit-grid,
+.gold-tier-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 48px;
+}
+
+.gold-benefit,
+.gold-tier {
+  background: #211b14;
+  border: 1px solid rgba(213, 170, 82, 0.18);
+}
+
+.gold-benefit-image,
+.gold-tier-image {
+  min-height: 210px;
+  background-position: center;
+  background-size: cover;
+}
+
+.gold-benefit-copy,
+.gold-tier-copy {
+  padding: 24px;
+}
+
+.gold-benefit h3,
+.gold-tier h3 {
+  margin-bottom: 9px;
+  color: #fff4db;
+  font-family: var(--font-cormorant);
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.gold-benefit p,
+.gold-tier p {
+  color: #b9ab91;
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+.gold-card-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+  background: #211b14;
+}
+
+.gold-showcase-image {
+  min-height: 600px;
+  background: url('/images/gold-card/avari-gold-card-3d.jpg') center / cover;
+}
+
+.gold-showcase-copy {
+  align-self: center;
+  max-width: 560px;
+  padding: 70px 10%;
+}
+
+.gold-outline-button {
+  margin-top: 28px;
+  border: 1px solid rgba(213, 170, 82, 0.7);
+  padding: 13px 19px;
+}
+
+.gold-tier-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.gold-tier-copy > span {
+  color: #d5aa52;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.gold-tier-note,
+.gold-footnote {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+  color: #a8987a;
+  font-size: 0.73rem;
+}
+
+.gold-festival-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 92px max(42px, 8vw);
+  border-top: 1px solid rgba(213, 170, 82, 0.2);
+  background: #0d0a07;
+}
+
+.experiences-page,
+.account-page {
+  min-height: 100vh;
+  background: #f8f5ef;
+}
+
+.experiences-shell,
+.account-shell {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 80px 42px;
+}
+
+.experiences-intro {
+  max-width: 750px;
+  margin-bottom: 60px;
+}
+
+.experiences-intro h1 {
+  margin: 18px 0 12px;
+  font-family: var(--font-cormorant);
+  font-size: clamp(3rem, 7vw, 6.4rem);
+  font-weight: 500;
+  line-height: 0.95;
+}
+
+.experiences-intro p {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+.festival-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.festival-card {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e7dfd1;
+}
+
+.festival-card-image {
+  position: relative;
+  min-height: 280px;
+  background-position: center;
+  background-size: cover;
+}
+
+.festival-card-image span {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 7px 10px;
+  background: rgba(18, 14, 10, 0.78);
+  color: #f0ce81;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.festival-card-copy {
+  padding: 26px;
+}
+
+.festival-card-meta,
+.festival-detail-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #9a6b18;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.festival-card h2 {
+  margin: 14px 0 8px;
+  font-family: var(--font-cormorant);
+  font-size: 2.3rem;
+  font-weight: 500;
+}
+
+.festival-card p,
+.festival-request-panel p {
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.festival-card-location,
+.festival-detail-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 18px;
+  color: #475569;
+  font-size: 0.8rem;
+}
+
+.festival-link {
+  margin-top: 22px;
+}
+
+.experiences-note {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 30px;
+  padding: 16px 18px;
+  background: #efe7d8;
+  color: #7c5d2a;
+  font-size: 0.78rem;
+}
+
+.festival-detail-page {
+  padding: 42px max(24px, 7vw) 100px;
+}
+
+.festival-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  color: #d5aa52;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.festival-detail-hero {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: end;
+  background-position: center;
+  background-size: cover;
+}
+
+.festival-detail-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(13, 10, 7, 0.88), rgba(13, 10, 7, 0.1));
+}
+
+.festival-detail-content {
+  position: relative;
+  max-width: 680px;
+  padding: 70px;
+}
+
+.festival-detail-content span {
+  color: #f0ce81;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.festival-detail-content h1 {
+  margin: 15px 0;
+  color: #fff4db;
+  font-family: var(--font-cormorant);
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 500;
+  line-height: 0.95;
+}
+
+.festival-detail-content p {
+  color: #dfd1b5;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.festival-detail-body {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 90px;
+  padding: 70px 0 0;
+}
+
+.festival-detail-body h2 {
+  margin: 34px 0 14px;
+  color: #fff4db;
+  font-family: var(--font-cormorant);
+  font-size: 3.2rem;
+  font-weight: 500;
+}
+
+.festival-detail-body p {
+  color: #b9ab91;
+  line-height: 1.85;
+}
+
+.festival-member-note {
+  margin-top: 24px;
+  color: #d5aa52 !important;
+  font-size: 0.82rem;
+}
+
+.festival-request-panel {
+  align-self: start;
+  padding: 30px;
+  background: #211b14;
+  border: 1px solid rgba(213, 170, 82, 0.22);
+}
+
+.festival-request-panel h3 {
+  margin: 12px 0 8px;
+  color: #fff4db;
+  font-family: var(--font-cormorant);
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+
+.festival-request-panel .gold-primary-button {
+  margin-top: 24px;
+}
+
+.account-shell {
+  padding-top: 100px;
+}
+
+.account-panel {
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  min-height: 620px;
+  background: #17130e;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+}
+
+.account-panel-copy {
+  padding: 80px;
+  background: linear-gradient(135deg, rgba(23, 19, 14, 0.92), rgba(23, 19, 14, 0.58)), url('/images/gold-card/avari-gold-welcome-kit.jpg') center / cover;
+}
+
+.account-panel-copy h1 {
+  max-width: 560px;
+  margin: 22px 0;
+  color: #fff4db;
+  font-family: var(--font-cormorant);
+  font-size: clamp(3rem, 5vw, 5.8rem);
+  font-weight: 500;
+  line-height: 0.98;
+}
+
+.account-panel-copy p {
+  max-width: 490px;
+  color: #dfd1b5;
+  line-height: 1.8;
+}
+
+.account-promise {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 26px;
+  color: #d5aa52;
+  font-size: 0.78rem;
+}
+
+.account-form-panel {
+  padding: 56px 46px;
+  background: #fff;
+}
+
+.account-form-heading span {
+  color: #9a6b18;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.account-form-heading h2 {
+  margin: 12px 0 28px;
+  font-family: var(--font-cormorant);
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+
+.google-button,
+.account-form-panel form button,
+.account-switch {
+  width: 100%;
+}
+
+.google-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px;
+  background: #fff;
+  border: 1px solid #d7dce4;
+  color: #1e293b;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.google-button span {
+  color: #9a6b18;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.account-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+  color: #94a3b8;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.account-divider::before,
+.account-divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: #e2e8f0;
+}
+
+.account-form-panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.account-form-panel label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.account-form-panel input {
+  padding: 13px 14px;
+  border: 1px solid #d7dce4;
+  color: #0f172a;
+  font: inherit;
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.account-form-panel form .gold-primary-button {
+  margin-top: 8px;
+}
+
+.account-switch {
+  margin-top: 22px;
+  border: 0;
+  background: none;
+  color: #9a6b18;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.account-security {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 34px;
+  color: #94a3b8;
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+.account-success {
+  padding-top: 70px;
+  text-align: center;
+}
+
+.account-success > svg {
+  color: #9a6b18;
+}
+
+.account-success h2 {
+  margin: 18px 0 9px;
+  font-family: var(--font-cormorant);
+  font-size: 2.6rem;
+  font-weight: 500;
+}
+
+.account-success p {
+  color: #64748b;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.account-success .gold-primary-button {
+  margin-top: 24px;
+}
+
+.account-back-link {
+  margin-top: 24px;
+  color: #9a6b18;
+}
+
+@media (max-width: 980px) {
+  .home-gold-band,
+  .gold-intro-section,
+  .gold-card-showcase,
+  .account-panel,
+  .festival-detail-body {
+    grid-template-columns: 1fr;
+  }
+
+  .home-gold-band-image,
+  .gold-showcase-image {
+    min-height: 360px;
+  }
+
+  .gold-benefit-grid,
+  .festival-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .account-panel-copy {
+    padding: 60px 42px;
+  }
+
+  .account-form-panel {
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-gold-band-content,
+  .gold-hero-content,
+  .gold-intro-section,
+  .gold-benefits-section,
+  .gold-tiers-section,
+  .experiences-shell,
+  .account-shell {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .gold-hero {
+    min-height: 680px;
+  }
+
+  .gold-hero h1 {
+    font-size: 4.2rem;
+  }
+
+  .gold-benefit-grid,
+  .gold-tier-grid,
+  .festival-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gold-festival-cta {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 70px 24px;
+  }
+
+  .festival-detail-page {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .festival-detail-content {
+    padding: 42px 26px;
+  }
+
+  .festival-detail-hero {
+    min-height: 500px;
+  }
+
+  .account-panel-copy,
+  .account-form-panel {
+    padding: 42px 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-gold-button,
+  .gold-primary-button {
+    transition: none;
+  }
 }
 @media (max-width: 900px) {
   .tour-spotlight-banner {

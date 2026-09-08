@@ -193,6 +193,34 @@ export default function Header() {
                   Best Rate Guarantee
                 </Link>
               </li>
+
+              <li>
+                <Link
+                  href="/gold-card"
+                  className={`nav-item-link ${pathname === '/gold-card' ? 'active' : ''}`}
+                  style={{ color: '#9A6B18' }}
+                >
+                  Avari Gold
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/festivals"
+                  className={`nav-item-link ${pathname.startsWith('/festivals') ? 'active' : ''}`}
+                >
+                  Experiences
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/account"
+                  className={`nav-item-link ${pathname.startsWith('/account') ? 'active' : ''}`}
+                >
+                  Account
+                </Link>
+              </li>
             </ul>
           </nav>
 

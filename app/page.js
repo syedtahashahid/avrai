@@ -1,10 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from './components/Header';
 import BookingBar from './components/BookingBar';
 import { PROPERTIES_DATA } from './data/propertiesData';
+import { getPortfolioRegion, PORTFOLIO_PROPERTIES, PORTFOLIO_REGIONS } from './data/portfolioData';
 import {
   Crown,
   Building2,
@@ -17,12 +18,14 @@ import {
   Star,
   MapPin,
   Clock,
-  Compass
+  Compass,
+  UserRound
 } from 'lucide-react';
 
 export default function HomePage() {
-  const lahoreProp = PROPERTIES_DATA['avari-lahore'];
-  const xpressProp = PROPERTIES_DATA['avari-xpress-gulberg'];
+  const [activeRegionId, setActiveRegionId] = useState('lahore');
+  const activeRegion = getPortfolioRegion(activeRegionId);
+  const activeProperties = activeRegion.properties.map((propertyId) => PORTFOLIO_PROPERTIES[propertyId]);
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -103,126 +106,79 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Featured Properties Section (Duo Grid) */}
+      {/* Portfolio destination rail and property switcher */}
       <section className="section-container">
         <div className="section-header-center">
-          <div className="section-overhead">Our Lahore Destinations</div>
-          <h2 className="section-main-heading">Two Premier Addresses in Lahore</h2>
+          <div className="section-overhead">The Avari portfolio</div>
+          <h2 className="section-main-heading">One world, many ways to arrive.</h2>
           <p className="section-paragraph">
-            Whether your journey calls for the heritage grandeur of The Mall or the vibrant corporate pulse of Gulberg, Avari offers unparalleled Pakistani hospitality.
+            Move between Avari destinations by region, then explore the rooms, facilities, and experiences available at each address.
           </p>
         </div>
 
-        <div className="properties-duo-grid">
-          {/* Card 1: Avari Hotel Lahore Flagship */}
-          <div className="property-showcase-card">
-            <div
-              className="property-img-box"
-              style={{ backgroundImage: `url('/images/lahore-facade.jpg')` }}
+        <div className="portfolio-region-rail" role="tablist" aria-label="Avari destinations">
+          {PORTFOLIO_REGIONS.map((region) => (
+            <button
+              key={region.id}
+              type="button"
+              role="tab"
+              aria-selected={activeRegionId === region.id}
+              className={`portfolio-region-tab ${activeRegionId === region.id ? 'active' : ''}`}
+              onClick={() => setActiveRegionId(region.id)}
             >
-              <div className="property-img-badge">
-                <Crown size={12} style={{ display: 'inline', marginRight: '5px' }} />
-                5-Star Heritage Flagship
-              </div>
-            </div>
+              <span>{region.label}</span>
+              <small>{region.properties.length} {region.properties.length === 1 ? 'address' : 'addresses'}</small>
+            </button>
+          ))}
+        </div>
 
-            <div className="property-details-box">
-              <h3 className="property-card-title">{lahoreProp.name}</h3>
-              <div className="property-card-tagline">"{lahoreProp.tagline}"</div>
-              <p className="property-card-desc">
-                Lahore's most prestigious 5-star address on Mall Road. Home to royalty, diplomats, award-winning restaurants like Dynasty and Fujiyama, and magnificent Venetian chandeliers in the Hall of Mirrors.
-              </p>
-
-              <div className="property-features-row">
-                <div className="property-feature-stat">
-                  <Building2 size={15} color="var(--avari-gold)" />
-                  <span>188 Rooms & Suites</span>
-                </div>
-                <div className="property-feature-stat">
-                  <Utensils size={15} color="var(--avari-gold)" />
-                  <span>5 Restaurants</span>
-                </div>
-                <div className="property-feature-stat">
-                  <Calendar size={15} color="var(--avari-gold)" />
-                  <span>1,200+ Banquet Capacity</span>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', gap: '12px' }}>
-                <Link
-                  href="/hotels/avari-hotel-lahore"
-                  className="btn-luxury-gold"
-                  style={{ flex: 1 }}
-                >
-                  Explore Property & Suites
-                </Link>
-                <Link
-                  href="/tours?property=avari-lahore"
-                  className="btn-luxury-outline"
-                  style={{ flex: 1 }}
-                >
-                  <Eye size={15} />
-                  3D Room Tours
-                </Link>
-              </div>
-            </div>
+        <div className="portfolio-region-heading">
+          <div>
+            <div className="section-overhead">{activeRegion.eyebrow}</div>
+            <h3>{activeRegion.label}</h3>
           </div>
+          <p>{activeRegion.description}</p>
+        </div>
 
-          {/* Card 2: Avari Xpress Gulberg Boutique */}
-          <div className="property-showcase-card">
-            <div
-              className="property-img-box"
-              style={{ backgroundImage: `url('/images/xpress-facade.jpg')` }}
-            >
-              <div className="property-img-badge" style={{ color: '#E05A47', borderColor: '#E05A47' }}>
-                <Building2 size={12} style={{ display: 'inline', marginRight: '5px' }} />
-                4-Star Contemporary Boutique
-              </div>
-            </div>
+        <div className="properties-duo-grid portfolio-property-grid">
+          {activeProperties.map((property) => {
+            const detailedProperty = PROPERTIES_DATA[property.slug];
+            const isReady = Boolean(detailedProperty && property.detailPath);
 
-            <div className="property-details-box">
-              <h3 className="property-card-title">{xpressProp.name}</h3>
-              <div className="property-card-tagline" style={{ color: '#E05A47' }}>
-                "{xpressProp.tagline}"
-              </div>
-              <p className="property-card-desc">
-                Located on prestigious Noor Jehan Road in Gulberg III. Designed for corporate executives and stylish weekend escapes, featuring smart business suites, The Coffee Shop, and high-speed enterprise connectivity.
-              </p>
-
-              <div className="property-features-row">
-                <div className="property-feature-stat">
-                  <Building2 size={15} color="#E05A47" />
-                  <span>80 Executive Suites</span>
+            return (
+              <div className="property-showcase-card" key={property.slug}>
+                <div className="property-img-box" style={{ backgroundImage: `url('${property.image}')` }}>
+                  <div className="property-img-badge">
+                    <Building2 size={12} style={{ display: 'inline', marginRight: '5px' }} />
+                    {property.category}
+                  </div>
                 </div>
-                <div className="property-feature-stat">
-                  <Utensils size={15} color="#E05A47" />
-                  <span>Anglo-Indian Bistro</span>
-                </div>
-                <div className="property-feature-stat">
-                  <Calendar size={15} color="#E05A47" />
-                  <span>6 Meeting Pods</span>
+                <div className="property-details-box">
+                  <div className="portfolio-card-status">{property.status}</div>
+                  <h3 className="property-card-title">{property.name}</h3>
+                  <div className="property-card-tagline">{property.city} <span>•</span> {property.descriptor}</div>
+                  <p className="property-card-desc">
+                    {detailedProperty?.description || `${property.name} is part of the expanding Avari portfolio. Room types, facilities, and verified booking details are being prepared for this destination.`}
+                  </p>
+                  <div className="property-features-row">
+                    <div className="property-feature-stat"><MapPin size={15} color="var(--avari-gold)" /><span>{property.city}</span></div>
+                    <div className="property-feature-stat"><Building2 size={15} color="var(--avari-gold)" /><span>{property.category}</span></div>
+                    <div className="property-feature-stat"><Sparkles size={15} color="var(--avari-gold)" /><span>{property.sourceStatus}</span></div>
+                  </div>
+                  <div className="portfolio-card-actions">
+                    {isReady ? (
+                      <>
+                        <Link href={property.detailPath} className="btn-luxury-gold" style={{ flex: 1 }}>Explore property</Link>
+                        <Link href={`/tours?property=${property.slug}`} className="btn-luxury-outline" style={{ flex: 1 }}><Eye size={15} /> 3D tours</Link>
+                      </>
+                    ) : (
+                      <Link href="/account" className="btn-luxury-outline" style={{ width: '100%' }}>Request destination updates <ArrowRight size={15} /></Link>
+                    )}
+                  </div>
                 </div>
               </div>
-
-              <div style={{ display: 'flex', gap: '12px' }}>
-                <Link
-                  href="/hotels/avari-xpress-gulberg"
-                  className="btn-luxury-gold"
-                  style={{ flex: 1, background: '#E05A47', color: '#FFF' }}
-                >
-                  Explore Property & Suites
-                </Link>
-                <Link
-                  href="/tours?property=avari-xpress-gulberg"
-                  className="btn-luxury-outline"
-                  style={{ flex: 1 }}
-                >
-                  <Eye size={15} />
-                  3D Room Tours
-                </Link>
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </section>
 
@@ -396,6 +352,20 @@ export default function HomePage() {
               Explore The Lakhnavi
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="home-gold-band">
+        <div className="home-gold-band-image" />
+        <div className="home-gold-band-content">
+          <div className="gold-section-label">Avari Gold Card</div>
+          <h2>A more personal way to stay.</h2>
+          <p>Connect your stays, dining, wellness, and future seasonal experiences to one considered member journey.</p>
+          <div className="home-gold-band-actions">
+            <Link href="/gold-card" className="home-gold-button">Discover membership <ArrowRight size={16} /></Link>
+            <Link href="/account?join=gold" className="home-gold-text-link">Join the preview <UserRound size={15} /></Link>
+          </div>
+          <small>Membership benefits and terms are preview content pending Avari approval.</small>
         </div>
       </section>
 
