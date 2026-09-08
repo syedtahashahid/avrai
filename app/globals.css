@@ -501,9 +501,117 @@ a {
   grid-template-columns: 1fr 1fr;
   gap: 36px;
 }
+
+.portfolio-region-rail {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  margin: 0 0 34px;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  scrollbar-width: thin;
+}
+
+.portfolio-region-tab {
+  min-width: 142px;
+  padding: 17px 18px 15px;
+  border: 0;
+  border-right: 1px solid #E2E8F0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #64748B;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition);
+}
+
+.portfolio-region-tab:first-child {
+  border-left: 1px solid #E2E8F0;
+}
+
+.portfolio-region-tab span,
+.portfolio-region-tab small {
+  display: block;
+}
+
+.portfolio-region-tab span {
+  color: #334155;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+}
+
+.portfolio-region-tab small {
+  margin-top: 3px;
+  color: #94A3B8;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.portfolio-region-tab:hover,
+.portfolio-region-tab.active {
+  background: #F8FAFC;
+  border-bottom-color: var(--avari-blue);
+}
+
+.portfolio-region-tab.active span,
+.portfolio-region-tab.active small {
+  color: var(--avari-blue);
+}
+
+.portfolio-region-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 32px;
+  margin: 0 0 26px;
+}
+
+.portfolio-region-heading h3 {
+  margin-top: 5px;
+  font-size: 2.15rem;
+  font-weight: 500;
+}
+
+.portfolio-region-heading p {
+  max-width: 460px;
+  color: #64748B;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  text-align: right;
+}
+
+.portfolio-card-status {
+  margin-bottom: 9px;
+  color: #9A6B18;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.portfolio-card-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.portfolio-property-grid .property-card-desc {
+  min-height: 96px;
+}
+
 @media (max-width: 900px) {
   .properties-duo-grid {
     grid-template-columns: 1fr;
+  }
+
+  .portfolio-region-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .portfolio-region-heading p {
+    text-align: left;
   }
 }
 
@@ -1397,6 +1505,16 @@ a {
 
   .gold-hero h1 {
     font-size: 4.2rem;
+  }
+
+  .portfolio-region-tab {
+    min-width: 126px;
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
+  .portfolio-card-actions {
+    flex-direction: column;
   }
 
   .gold-benefit-grid,
