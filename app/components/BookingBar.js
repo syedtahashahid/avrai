@@ -10,10 +10,9 @@ import {
   ChevronDown,
   Building2,
   Crown,
-  Sparkles,
   ExternalLink
 } from 'lucide-react';
-import { getTravelClickBookingUrl } from '../utils/bookingUrl';
+import { PORTFOLIO_PROPERTIES } from '../data/portfolioData';
 
 export default function BookingBar({ defaultHotel = 'avari-lahore' }) {
   const router = useRouter();
@@ -35,7 +34,11 @@ export default function BookingBar({ defaultHotel = 'avari-lahore' }) {
     'avari-xpress-gulberg': {
       name: 'Avari Xpress Gulberg',
       tag: '4-Star Contemporary Boutique • Gulberg III, Lahore'
-    }
+    },
+    ...Object.fromEntries(Object.values(PORTFOLIO_PROPERTIES).map((property) => [property.slug, {
+      name: property.name,
+      tag: `${property.category} • ${property.city}`
+    }]))
   };
 
   const handleSelectHotel = (hotelKey) => {
@@ -49,19 +52,7 @@ export default function BookingBar({ defaultHotel = 'avari-lahore' }) {
   };
 
   const handleSearch = () => {
-    // Official TravelClick / iHotelier Redirection
-    const travelClickUrl = getTravelClickBookingUrl({
-      hotelId: selectedHotel,
-      checkIn: checkInDate,
-      checkOut: checkOutDate,
-      adults: adults,
-      rooms: rooms
-    });
-
-    // Open official Avari reservation system in new tab
-    if (typeof window !== 'undefined') {
-      window.open(travelClickUrl, '_blank', 'noopener,noreferrer');
-    }
+    router.push(`/booking?hotel=${encodeURIComponent(selectedHotel)}&checkin=${encodeURIComponent(checkInDate)}&checkout=${encodeURIComponent(checkOutDate)}&adults=${adults}&rooms=${rooms}`);
   };
 
   return (
@@ -77,40 +68,28 @@ export default function BookingBar({ defaultHotel = 'avari-lahore' }) {
             Destination / Hotel
           </div>
           <div className="bk-segment-value" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <span>{hotelNames[selectedHotel].name}</span>
+            <span>{hotelNames[selectedHotel]?.name || 'Avari Hotel Lahore'}</span>
             <ChevronDown size={15} color="var(--text-muted)" />
           </div>
           <div className="bk-segment-sub">
-            {hotelNames[selectedHotel].tag.split('•')[0]}
+            {(hotelNames[selectedHotel]?.tag || '5-Star Flagship').split('•')[0]}
           </div>
 
           {/* Hotel Dropdown */}
           {hotelDropdownOpen && (
             <div className="bk-dropdown-menu" onClick={(e) => e.stopPropagation()}>
               <div style={{ padding: '8px 18px', fontSize: '0.68rem', textTransform: 'uppercase', color: 'var(--avari-gold)', fontWeight: 700 }}>
-                Select Lahore Property
+                Select an Avari destination
               </div>
-              <div
-                className="bk-dropdown-item"
-                onClick={() => handleSelectHotel('avari-lahore')}
-              >
-                <div className="bk-hotel-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Crown size={15} color="var(--avari-gold)" />
-                  Avari Hotel Lahore
+              {Object.values(PORTFOLIO_PROPERTIES).map((property) => (
+                <div className="bk-dropdown-item" key={property.slug} onClick={() => handleSelectHotel(property.slug)}>
+                  <div className="bk-hotel-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    {property.slug === 'avari-lahore' ? <Crown size={15} color="var(--avari-gold)" /> : <Building2 size={15} color="var(--avari-blue)" />}
+                    {property.name}
+                  </div>
+                  <div className="bk-hotel-sub">{property.category} • {property.city}</div>
                 </div>
-                <div className="bk-hotel-sub">87 The Mall Road • 5-Star Heritage Flagship</div>
-              </div>
-
-              <div
-                className="bk-dropdown-item"
-                onClick={() => handleSelectHotel('avari-xpress-gulberg')}
-              >
-                <div className="bk-hotel-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Building2 size={15} color="#E05A47" />
-                  Avari Xpress Gulberg
-                </div>
-                <div className="bk-hotel-sub">Noor Jehan Road, Gulberg III • Contemporary Boutique</div>
-              </div>
+              ))}
             </div>
           )}
         </div>
@@ -250,3 +229,4 @@ export default function BookingBar({ defaultHotel = 'avari-lahore' }) {
     </div>
   );
 }
+

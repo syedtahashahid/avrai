@@ -25,7 +25,8 @@ export default function TourViewer3D({
   currentRoom,
   allRooms,
   onSelectRoom,
-  property
+  property,
+  hideHeader = false
 }) {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
@@ -192,12 +193,13 @@ export default function TourViewer3D({
       geometry.dispose();
       material.dispose();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Update Texture when Room or Lighting Mode changes
   useEffect(() => {
     if (!sphereMeshRef.current || !currentRoom) return;
-    const manifest = createSceneManifest({ propertySlug: property.id, property, room: currentRoom });
+    const manifest = createSceneManifest({ propertySlug: property?.id || 'avari-lahore', property, room: currentRoom });
     const newTex = getRoomTexture(manifest.fallbackSceneKey, lightingMode);
     sphereMeshRef.current.material.map = newTex;
     sphereMeshRef.current.material.needsUpdate = true;
@@ -207,9 +209,8 @@ export default function TourViewer3D({
     if (currentRoom.waypoints?.[0]) {
       targetLon.current = currentRoom.waypoints[0].yaw;
       targetLat.current = currentRoom.waypoints[0].pitch;
-      setActiveWaypoint(currentRoom.waypoints[0].id);
     }
-  }, [currentRoom, lightingMode]);
+  }, [currentRoom, lightingMode, property]);
 
   // -------------------------------------------------------------
   // MOUSE & TOUCH EVENT HANDLERS
@@ -265,19 +266,21 @@ export default function TourViewer3D({
   };
 
   return (
-    <section id="tour-section" className="content-section" style={{ paddingTop: '20px' }}>
+    <section id="tour-section" className="content-section" style={{ paddingTop: hideHeader ? '0' : '20px', paddingBottom: '0' }}>
       {/* Section Header */}
-      <div className="section-header">
-        <div className="section-subtitle">
-          {property.heroBadge}
+      {!hideHeader && (
+        <div className="section-header">
+          <div className="section-subtitle">
+            {property.heroBadge}
+          </div>
+          <h2 className="section-title">
+            Immersive 360° Experience
+          </h2>
+          <p className="section-description">
+            Click and drag in 360 degrees to explore room dimensions, finishes, and panoramic views. Tap the floating gold markers to inspect handcrafted furnishings and luxury amenities.
+          </p>
         </div>
-        <h2 className="section-title">
-          Interactive 360° Virtual Tour
-        </h2>
-        <p className="section-description">
-          Click and drag in 360 degrees to explore room dimensions, finishes, and panoramic views. Tap the floating gold markers to inspect handcrafted furnishings and luxury amenities.
-        </p>
-      </div>
+      )}
 
       {/* Room Category Quick Selector Bar */}
       <div style={{
@@ -529,3 +532,4 @@ export default function TourViewer3D({
     </section>
   );
 }
+

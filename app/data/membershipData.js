@@ -43,3 +43,4 @@ export const GOLD_CARD_TIERS = [
 ];
 
 export const GOLD_CARD_STATUS = 'preview';
+

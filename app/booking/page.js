@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import Header from '../components/Header';
+
 import BookingModal from '../components/BookingModal';
 import { PROPERTIES_DATA } from '../data/propertiesData';
 import {
@@ -34,12 +34,6 @@ function BookingContent() {
 
   const [selectedHotel, setSelectedHotel] = useState(hotelParam);
   const [activeModalRoom, setActiveModalRoom] = useState(null);
-
-  useEffect(() => {
-    if (hotelParam && PROPERTIES_DATA[hotelParam]) {
-      setSelectedHotel(hotelParam);
-    }
-  }, [hotelParam]);
 
   const property = PROPERTIES_DATA[selectedHotel] || null;
   const portfolioProperty = PORTFOLIO_PROPERTIES[selectedHotel] || PORTFOLIO_PROPERTIES['avari-lahore'];
@@ -226,7 +220,6 @@ function BookingContent() {
                     href={travelClickUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => recordBookingActivity({ property: property?.name || portfolioProperty.name, hotelId: selectedHotel, status: 'provider-handoff', source: 'booking-results', checkIn: checkinParam, checkOut: checkoutParam })}
                     onClick={() => recordBookingActivity({ property: property?.name || portfolioProperty.name, hotelId: selectedHotel, status: 'provider-handoff', source: 'rate-card', room: room.name, checkIn: checkinParam, checkOut: checkoutParam })}
                     className="btn-luxury-gold"
                     style={{
@@ -245,12 +238,12 @@ function BookingContent() {
                   </a>
 
                   <Link
-                    href={`/tours?property=${selectedHotel}`}
+                    href={`/hotels/${selectedHotel}`}
                     className="btn-luxury-outline"
                     style={{ width: '100%', padding: '10px', fontSize: '0.78rem' }}
                   >
                     <Eye size={14} />
-                    Inspect in 3D Tour
+                    View Hotel & Suites
                   </Link>
                 </div>
               </div>
@@ -272,10 +265,11 @@ function BookingContent() {
 export default function BookingPage() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Header />
+      
       <Suspense fallback={<div style={{ padding: '80px', textAlign: 'center', color: '#FFF' }}>Loading rates...</div>}>
         <BookingContent />
       </Suspense>
     </div>
   );
 }
+

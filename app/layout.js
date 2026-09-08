@@ -1,9 +1,11 @@
 import './globals.css';
+import Header from './components/Header';
+import SiteFooter from './components/SiteFooter';
 
 export const metadata = {
-  title: 'Avari Hotels & Resorts | Interactive 3D Virtual Tours & Showcase',
-  description: 'Experience 3D 360-degree virtual room tours, fine dining, grand ballrooms, and luxury amenities for Avari Hotel Lahore and Avari Xpress Gulberg.',
-  keywords: 'Avari Hotel Lahore, Avari Xpress Gulberg, 3D room tour, hotel virtual tour, luxury suites, Mall Road, Gulberg Lahore'
+  title: 'Avari Hotels & Resorts | Immersive Room Experiences & Showcase',
+  description: 'Experience immersive 360-degree room tours, fine dining, grand ballrooms, and luxury amenities for Avari Hotel Lahore and Avari Xpress Gulberg.',
+  keywords: 'Avari Hotel Lahore, Avari Xpress Gulberg, immersive room tour, hotel virtual experience, luxury suites, Mall Road, Gulberg Lahore'
 };
 
 export default function RootLayout({ children }) {
@@ -15,7 +17,9 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#090C12" />
       </head>
       <body>
+        <Header />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

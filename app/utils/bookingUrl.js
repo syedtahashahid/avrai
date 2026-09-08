@@ -106,3 +106,4 @@ export function redirectToTravelClick(params = {}, openNewTab = false) {
   }
   return url;
 }
+

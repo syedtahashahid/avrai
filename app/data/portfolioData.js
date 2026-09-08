@@ -71,93 +71,94 @@ export const PORTFOLIO_PROPERTIES = {
     name: 'Avari Towers',
     city: 'Karachi',
     category: 'Luxury / 5-star',
-    descriptor: 'Major flagship',
-    image: '/images/hero-banner.jpg',
-    status: 'Portfolio preview',
-    sourceStatus: 'Room and facility fact sheet required'
+    descriptor: 'Major flagship skyscraper & tropical oasis',
+    image: '/images/karachi-towers.jpg',
+    status: 'Explore demo',
+    sourceStatus: 'Preview showcase with mock rooms & 3D tour'
   },
   'beach-luxury-karachi': {
     slug: 'beach-luxury-karachi',
     name: 'Beach Luxury Hotel',
     city: 'Karachi',
     category: 'Luxury / 4-star',
-    descriptor: 'Waterfront resort-style',
-    image: '/images/hero-banner.jpg',
-    status: 'Portfolio preview',
-    sourceStatus: 'Room and facility fact sheet required'
+    descriptor: 'Waterfront resort & tropical gardens',
+    image: '/images/gold-card/avari-gold-dining.jpg',
+    status: 'Explore demo',
+    sourceStatus: 'Preview showcase with mock rooms & 3D tour'
   },
   'avari-xpress-islamabad': {
     slug: 'avari-xpress-islamabad',
     name: 'Avari Xpress Islamabad',
     city: 'Islamabad',
     category: 'Business / boutique',
-    descriptor: 'Capital city hotel',
-    image: '/images/hero-banner.jpg',
-    status: 'Portfolio preview',
-    sourceStatus: 'Room and facility fact sheet required'
+    descriptor: 'Capital city executive address',
+    image: '/images/gold-card/avari-gold-vip-reception.jpg',
+    status: 'Explore demo',
+    sourceStatus: 'Preview showcase with mock rooms & 3D tour'
   },
   'avari-xpress-multan': {
     slug: 'avari-xpress-multan',
     name: 'Avari Xpress Multan',
     city: 'Multan',
     category: 'Business / modern',
-    descriptor: 'City hotel',
-    image: '/images/hero-banner.jpg',
-    status: 'Portfolio preview',
-    sourceStatus: 'Room and facility fact sheet required'
+    descriptor: 'City of saints central hotel',
+    image: '/images/gold-card/avari-gold-hero-banner.jpg',
+    status: 'Explore demo',
+    sourceStatus: 'Preview showcase with mock rooms & 3D tour'
   },
   'avari-boutique-multan': {
     slug: 'avari-boutique-multan',
     name: 'Avari Boutique Multan',
     city: 'Multan',
     category: 'Boutique',
-    descriptor: 'Boutique property',
-    image: '/images/hero-banner.jpg',
-    status: 'Portfolio preview',
-    sourceStatus: 'Room and facility fact sheet required'
+    descriptor: 'Intimate bespoke residence',
+    image: '/images/dynasty-dining.jpg',
+    status: 'Explore demo',
+    sourceStatus: 'Preview showcase with mock rooms & 3D tour'
   },
   'avari-xpress-faisalabad': {
     slug: 'avari-xpress-faisalabad',
     name: 'Avari Xpress Faisalabad',
     city: 'Faisalabad',
     category: 'Business / modern',
-    descriptor: 'City hotel',
-    image: '/images/hero-banner.jpg',
-    status: 'Portfolio preview',
-    sourceStatus: 'Room and facility fact sheet required'
+    descriptor: 'Industrial hub city hotel',
+    image: '/images/xpress-facade.jpg',
+    status: 'Explore demo',
+    sourceStatus: 'Preview showcase with mock rooms & 3D tour'
   },
   'avari-xpress-skardu': {
     slug: 'avari-xpress-skardu',
     name: 'Avari Xpress Skardu',
     city: 'Skardu, Gilgit-Baltistan',
     category: 'Mountain / leisure',
-    descriptor: 'Northern Pakistan',
-    image: '/images/hero-banner.jpg',
-    status: 'Verification required',
-    sourceStatus: 'Official operating status and inventory require confirmation'
+    descriptor: 'Northern alpine sanctuary',
+    image: '/images/gold-card/avari-gold-wellness.jpg',
+    status: 'Explore demo',
+    sourceStatus: 'Preview showcase with mock rooms & 3D tour'
   },
   'mountain-view-bhurban': {
     slug: 'mountain-view-bhurban',
     name: 'Mountain View Hotel Apartments',
     city: 'Bhurban / Murree',
     category: 'Mountain / serviced apartments',
-    descriptor: 'Candidate Avari-managed stay',
+    descriptor: 'Scenic pine hills retreat',
     image: '/images/hero-banner.jpg',
-    status: 'Verification required',
-    sourceStatus: 'Management and operating status require confirmation'
+    status: 'Explore demo',
+    sourceStatus: 'Preview showcase with mock rooms & 3D tour'
   },
   'international-portfolio': {
     slug: 'international-portfolio',
     name: 'International Avari destinations',
-    city: 'Outside Pakistan',
-    category: 'Future portfolio',
-    descriptor: 'Ready for verified destinations',
-    image: '/images/hero-banner.jpg',
-    status: 'Coming soon',
-    sourceStatus: 'Current international property list requires confirmation'
+    city: 'Dubai / Toronto',
+    category: 'Global portfolio',
+    descriptor: 'Global hospitality network',
+    image: '/images/gold-card/avari-gold-black-tiers.jpg',
+    status: 'Explore demo',
+    sourceStatus: 'Preview showcase with mock rooms & 3D tour'
   }
 };
 
 export function getPortfolioRegion(regionId) {
   return PORTFOLIO_REGIONS.find((region) => region.id === regionId) || PORTFOLIO_REGIONS[0];
 }
+

@@ -1,8 +1,10 @@
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, Bed, CheckCircle2, Compass, ExternalLink, Maximize2, Users } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Bed, CheckCircle2, Compass, Maximize2, Users } from 'lucide-react';
+import RoomExperience from '../../../../components/RoomExperience';
 import { getRoomBySlug, getRoomPath, slugifyRoomName } from '../../../../lib/roomData';
-import { getTravelClickBookingUrl } from '../../../../utils/bookingUrl';
+import { getRoomGallery } from '../../../../lib/roomData';
 import { PROPERTIES_DATA } from '../../../../data/propertiesData';
+import RoomBookingButton from '../../../../components/RoomBookingButton';
 
 export function generateStaticParams() {
   return Object.entries(PROPERTIES_DATA).flatMap(([propertySlug, property]) => (
@@ -24,33 +26,52 @@ export default async function RoomDetailPage({ params }) {
   const result = getRoomBySlug(propertySlug, roomSlug);
 
   if (!result) {
-    return <main className="room-not-found"><h1>Room not found</h1><Link href="/booking">Return to booking</Link></main>;
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <Header />
+        <main className="room-not-found">
+          <h1>Room not found</h1>
+          <p>The requested room could not be found in our collection.</p>
+          <Link href="/booking" className="btn-luxury-gold">Return to booking</Link>
+        </main>
+        <SiteFooter />
+      </div>
+    );
   }
 
   const { property, room } = result;
   const relatedRooms = property.rooms.filter((candidate) => candidate.id !== room.id).slice(0, 3);
-  const bookingUrl = getTravelClickBookingUrl({ hotelId: propertySlug, adults: 2 });
+  const gallery = getRoomGallery(property, room);
 
   return (
-    <main className="room-detail-page">
-      <div className="room-detail-topbar">
-        <Link href={`/hotels/${propertySlug}`} className="room-back-link"><ArrowLeft size={15} /> {property.name}</Link>
-        <span className="room-preview-label">Room detail preview</span>
-      </div>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <main className="room-detail-page">
+        <div className="room-detail-topbar">
+          <Link href={`/hotels/${propertySlug}`} className="room-back-link">
+            <ArrowLeft size={16} /> Back to {property.name}
+          </Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span className="room-preview-label">{property.city}</span>
+            <span className="room-preview-label" style={{ background: '#FEF3C7', color: '#92400E', borderColor: '#FDE68A' }}>
+              {room.tier}
+            </span>
+          </div>
+        </div>
       <section className="room-detail-hero">
-        <div className="room-detail-visual" style={{ backgroundImage: `url('${property.coverImage || '/images/suite-luxury.jpg'}')` }}>
-          <span><Compass size={15} /> 360 scene ready</span>
+        <div className="room-detail-gallery">
+          {gallery.map((image) => <div className="room-detail-gallery-image" key={image.label} style={{ backgroundImage: `url('${image.src}')` }}><span>{image.label}</span></div>)}
         </div>
         <div className="room-detail-hero-copy">
           <div className="gold-section-label">{room.tag}</div>
           <h1>{room.name}</h1>
           <p>{room.description}</p>
           <div className="room-detail-actions">
-            <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="btn-luxury-gold">Reserve on TravelClick <ExternalLink size={15} /></a>
+            <RoomBookingButton room={room} property={property} />
             <Link href={`/compare?rooms=${propertySlug}:${room.id}`} className="btn-luxury-outline">Add to compare <ArrowRight size={15} /></Link>
           </div>
         </div>
       </section>
+      <RoomExperience property={property} room={room} gallery={gallery} />
       <section className="room-detail-content">
         <div className="room-detail-specs">
           <div><Maximize2 size={18} /><strong>{room.area}</strong><span>Room area</span></div>
@@ -70,7 +91,7 @@ export default async function RoomDetailPage({ params }) {
             <span>Preview rate</span>
             <strong>{room.pricePerNight}</strong>
             <small>per night · confirm current availability with the booking provider</small>
-            <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="btn-luxury-gold">Check availability <ExternalLink size={14} /></a>
+            <RoomBookingButton room={room} property={property} />
           </aside>
         </div>
       </section>
@@ -86,5 +107,6 @@ export default async function RoomDetailPage({ params }) {
         </div>
       </section>
     </main>
+    </div>
   );
 }

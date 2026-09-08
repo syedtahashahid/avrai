@@ -90,7 +90,7 @@ export default function PropertyHero({
             color: isLahore ? 'var(--avari-gold-light)' : 'var(--xpress-coral-light)',
             marginBottom: '18px'
           }}>
-            "{property.tagline}"
+            &quot;{property.tagline}&quot;
           </p>
 
           <p style={{
@@ -200,3 +200,4 @@ export default function PropertyHero({
     </section>
   );
 }
+

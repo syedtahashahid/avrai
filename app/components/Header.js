@@ -1,25 +1,25 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import {
   Calendar,
   Presentation,
   ChevronDown,
-  Sparkles,
   PhoneCall,
   ExternalLink,
   UserRound
 } from 'lucide-react';
-import PitchModeOverlay from './PitchModeOverlay';
 import { getTravelClickBookingUrl } from '../utils/bookingUrl';
 import { PORTFOLIO_PROPERTIES, PORTFOLIO_REGIONS } from '../data/portfolioData';
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const [hotelsDropdownOpen, setHotelsDropdownOpen] = useState(false);
-  const [isPitchOpen, setIsPitchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -33,13 +33,27 @@ export default function Header() {
               <PhoneCall size={14} color="var(--avari-gold)" />
               <span>Direct Reservations: +92 (42) 111-282-747</span>
             </div>
+            <Link
+              href="/support"
+              style={{
+                fontSize: '0.74rem',
+                color: 'var(--avari-blue)',
+                fontWeight: 600,
+                textDecoration: 'none'
+              }}
+            >
+              Concierge Desk
+            </Link>
           </div>
 
           {/* Center: Official Brand Logo with Light Blue Sail (Dark Text on Light Header) */}
           <Link href="/" className="brand-emblem-container">
-            <img
+            <Image
               src="/images/avari-logo-dark.png"
               alt="Avari Hotels & Resorts"
+              width={92}
+              height={46}
+              priority
               style={{
                 height: '46px',
                 width: 'auto',
@@ -56,32 +70,8 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Right: Executive Pitch Mode & Book Now */}
+          {/* Right: Book Now & Sign In */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            {/* Executive Pitch Deck trigger for the Avari Meeting */}
-            <button
-              onClick={() => setIsPitchOpen(true)}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '7px 16px',
-                background: 'rgba(2, 124, 255, 0.08)',
-                border: '1px solid var(--avari-blue)',
-                color: 'var(--avari-blue)',
-                borderRadius: '6px',
-                fontSize: '0.74rem',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.08em',
-                cursor: 'pointer',
-                transition: 'var(--transition)'
-              }}
-              title="Executive Pitch Deck"
-            >
-              <Presentation size={15} />
-            </button>
-
             <a
               href={getTravelClickBookingUrl({ hotelId: '14412' })}
               target="_blank"
@@ -160,17 +150,6 @@ export default function Header() {
 
               <li>
                 <Link
-                  href="/tours"
-                  className={`nav-item-link ${pathname === '/tours' ? 'active' : ''}`}
-                  style={{ color: 'var(--avari-gold-light)', display: 'flex', alignItems: 'center', gap: '5px' }}
-                >
-                  <Sparkles size={14} color="var(--avari-gold)" />
-                  3D Virtual Tours
-                </Link>
-              </li>
-
-              <li>
-                <Link
                   href="/dining"
                   className={`nav-item-link ${pathname === '/dining' ? 'active' : ''}`}
                 >
@@ -223,7 +202,6 @@ export default function Header() {
                   Compare rooms
                 </Link>
               </li>
-
             </ul>
           </nav>
 
@@ -232,16 +210,7 @@ export default function Header() {
           </div>
         </div>
       </header>
-
-      {/* Pitch Mode Presentation Modal */}
-      <PitchModeOverlay
-        isOpen={isPitchOpen}
-        onClose={() => setIsPitchOpen(false)}
-        onStartChoreographedDemo={() => {
-          setIsPitchOpen(false);
-          window.location.href = '/tours?autoplay=true';
-        }}
-      />
     </>
   );
 }
+

@@ -121,3 +121,4 @@ export const FESTIVALS = [
 export function getFestivalBySlug(slug) {
   return FESTIVALS.find((festival) => festival.slug === slug);
 }
+

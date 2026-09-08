@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight, CalendarDays, MapPin, Sparkles } from 'lucide-react';
-import Header from '../components/Header';
+
 import { FESTIVALS } from '../data/festivalData';
 
 export const metadata = {
@@ -10,8 +10,8 @@ export const metadata = {
 
 export default function FestivalsPage() {
   return (
-    <div className="experiences-page">
-      <Header />
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
+      
       <main className="experiences-shell">
         <section className="experiences-intro">
           <div className="gold-section-label"><Sparkles size={15} /> Avari experiences</div>
@@ -41,3 +41,4 @@ export default function FestivalsPage() {
     </div>
   );
 }
+

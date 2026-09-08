@@ -7,15 +7,11 @@ import {
   Maximize2,
   Users,
   Bed,
-  Sparkles,
-  Calendar,
-  Compass,
-  ExternalLink
+  Compass
 } from 'lucide-react';
-import { getTravelClickBookingUrl } from '../utils/bookingUrl';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { getRoomPath } from '../lib/roomData';
-import { recordBookingActivity } from '../lib/demoStore';
 
 export default function RoomCatalog({
   property,
@@ -24,6 +20,7 @@ export default function RoomCatalog({
   onBookRoom
 }) {
   const [selectedFilter, setSelectedFilter] = useState('all');
+  const router = useRouter();
   const isLahore = property.id === 'avari-lahore';
 
   // Available room tiers for filter
@@ -90,9 +87,18 @@ export default function RoomCatalog({
           const isCurrentlyActiveInTour = room.id === currentRoom.id;
 
           return (
-            <div
+            <article
               key={room.id}
               className="room-card"
+              role="link"
+              tabIndex={0}
+              onClick={() => router.push(getRoomPath(property.id, room))}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  router.push(getRoomPath(property.id, room));
+                }
+              }}
               style={{
                 borderColor: isCurrentlyActiveInTour
                   ? (isLahore ? 'var(--avari-gold)' : 'var(--xpress-coral)')
@@ -196,48 +202,32 @@ export default function RoomCatalog({
                       href={getRoomPath(property.id, room)}
                       className="luxury-btn-outline"
                       style={{ padding: '9px 15px', fontSize: '0.8rem' }}
-                    >
-                      Details
-                    </Link>
-                    <button
-                      onClick={() => onLaunchTour(room)}
-                      className={isCurrentlyActiveInTour ? 'luxury-btn-gold' : 'luxury-btn-outline'}
-                      style={{
-                        padding: '9px 15px',
-                        fontSize: '0.8rem',
-                        background: isCurrentlyActiveInTour && !isLahore ? 'var(--xpress-gradient)' : undefined
-                      }}
+                      onClick={(event) => event.stopPropagation()}
                     >
                       <Eye size={15} />
-                      {isCurrentlyActiveInTour ? 'Active Tour' : '3D Tour'}
-                    </button>
-
-                    <a
-                      href={getTravelClickBookingUrl({ hotelId: property.id, adults: 2 })}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => recordBookingActivity({ property: property.name, hotelId: property.id, room: room.name, status: 'provider-handoff', source: 'room-catalog' })}
+                      View
+                    </Link>
+                    <button
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        onBookRoom(room);
+                      }}
                       className="luxury-btn-gold"
                       style={{
                         padding: '9px 15px',
                         fontSize: '0.8rem',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '6px'
                       }}
-                      title="Reserve on official Avari reservation engine"
                     >
-                      <Calendar size={14} />
-                      <span>Book</span>
-                      <ExternalLink size={12} style={{ opacity: 0.9 }} />
-                    </a>
+                      Book now
+                    </button>
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
           );
         })}
       </div>
     </section>
   );
 }
+

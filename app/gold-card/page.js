@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight, Check, Crown, Sparkles, UserRound } from 'lucide-react';
-import Header from '../components/Header';
+
 import { GOLD_CARD_BENEFITS, GOLD_CARD_TIERS } from '../data/membershipData';
 
 export const metadata = {
@@ -10,8 +10,8 @@ export const metadata = {
 
 export default function GoldCardPage() {
   return (
-    <div className="gold-experience-page">
-      <Header />
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
+      
       <main>
         <section className="gold-hero">
           <div className="gold-hero-image" />
@@ -96,3 +96,4 @@ export default function GoldCardPage() {
     </div>
   );
 }
+

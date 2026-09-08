@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Header from '../../components/Header';
+
 import BookingBar from '../../components/BookingBar';
 import TourViewer3D from '../../components/TourViewer3D';
 import RoomCatalog from '../../components/RoomCatalog';
@@ -53,7 +53,7 @@ export default function AvariLahorePage() {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Header />
+      
 
       {/* Property Hero Banner */}
       <section
@@ -93,7 +93,7 @@ export default function AvariLahorePage() {
           overflowX: 'auto'
         }}>
           <a href="#tour-section" className="nav-item-link" style={{ color: 'var(--avari-gold)' }}>
-            ✦ 3D Virtual Tour
+            ✦ Immersive Experience
           </a>
           <a href="#rooms-section" className="nav-item-link">
             Rooms & Suites ({property.rooms.length})
@@ -162,3 +162,4 @@ export default function AvariLahorePage() {
     </div>
   );
 }
+

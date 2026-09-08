@@ -17,3 +17,4 @@ export function createSceneManifest({ propertySlug, property, room }) {
     note: 'Replace assetUrl with an approved panorama or GLTF asset when supplied by Avari.'
   };
 }
+

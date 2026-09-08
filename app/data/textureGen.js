@@ -888,3 +888,4 @@ function drawLightingGlow(ctx, w, h, isNight, customGlow) {
   ctx.fillStyle = glowColor;
   ctx.fillRect(0, 0, w, h);
 }
+

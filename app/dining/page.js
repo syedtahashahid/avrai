@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import Header from '../components/Header';
+
 import TableModal from '../components/TableModal';
 import { PROPERTIES_DATA } from '../data/propertiesData';
-import { Utensils, Clock, Calendar, Eye, Sparkles, MapPin } from 'lucide-react';
+import { Calendar, Compass, MapPin, ArrowRight, Clock, Eye, Sparkles, Utensils } from 'lucide-react';
 import Link from 'next/link';
 
 export default function DiningPage() {
@@ -14,8 +14,8 @@ export default function DiningPage() {
   const [selectedVenue, setSelectedVenue] = useState(null);
 
   return (
-    <div className="dining-page" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Header />
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
+      
 
       {/* Hero Banner with Dynasty image */}
       <section
@@ -117,7 +117,7 @@ export default function DiningPage() {
               <div style={{ display: 'flex', gap: '10px' }}>
                 {venue.has3DTour && (
                   <Link
-                    href="/tours?property=avari-lahore"
+                    href="/hotels/avari-lahore"
                     className="btn-luxury-outline"
                     style={{ flex: 1, padding: '10px', fontSize: '0.78rem' }}
                   >
@@ -206,3 +206,4 @@ export default function DiningPage() {
     </div>
   );
 }
+

@@ -17,7 +17,7 @@ export const PROPERTIES_DATA = {
     heroBadge: "Flagship 5-Star Address",
     themeColor: "#D4AF37", // Imperial Gold
     accentColor: "#1A2536", // Royal Midnight Navy
-    coverImage: "/images/lahore-exterior.jpg",
+    coverImage: "/images/lahore-facade.jpg",
     description: "Nestled on Lahore's most celebrated historic avenue, Avari Hotel Lahore stands as an architectural icon of classical grandeur. For decades, it has been the sanctuary of royalty, world leaders, and discerning travelers, offering palatial suites, award-winning international dining, and an oasis of secluded tropical gardens in the heart of the city.",
     stats: {
       roomsCount: "188 Rooms & Suites",
@@ -441,7 +441,7 @@ export const PROPERTIES_DATA = {
     heroBadge: "Modern Gulberg Hub",
     themeColor: "#E05A47", // Vibrant Warm Coral / Modern Rust
     accentColor: "#1E293B", // Sleek Titanium Slate
-    coverImage: "/images/xpress-exterior.jpg",
+    coverImage: "/images/xpress-facade.jpg",
     description: "Located on prestigious Noor Jehan Road in Gulberg III, moments from MM Alam Road's fine dining strip, Main Boulevard corporate headquarters, and upscale shopping malls. Avari Xpress combines cutting-edge contemporary design, seamless smart business connectivity, and Avari's hallmark warmth in a boutique setting.",
     stats: {
       roomsCount: "80 Modern Rooms & Suites",
@@ -776,3 +776,4 @@ export const PITCH_DATA = {
     }
   ]
 };
+

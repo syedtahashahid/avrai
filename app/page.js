@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Header from './components/Header';
+import { useRouter } from 'next/navigation';
 import BookingBar from './components/BookingBar';
 import { PROPERTIES_DATA } from './data/propertiesData';
 import { getPortfolioRegion, PORTFOLIO_PROPERTIES, PORTFOLIO_REGIONS } from './data/portfolioData';
@@ -23,13 +23,13 @@ import {
 } from 'lucide-react';
 
 export default function HomePage() {
+  const router = useRouter();
   const [activeRegionId, setActiveRegionId] = useState('lahore');
   const activeRegion = getPortfolioRegion(activeRegionId);
   const activeProperties = activeRegion.properties.map((propertyId) => PORTFOLIO_PROPERTIES[propertyId]);
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Header />
 
       {/* Hero Section with PC Hotels style layout & user image */}
       <section
@@ -50,13 +50,13 @@ export default function HomePage() {
             </h1>
 
             <p className="hero-sub-text">
-              Explore our premier Lahore destinations in interactive 3D virtual reality.
+              Explore our premier Lahore destinations in an immersive 360° reality.
             </p>
 
             <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-              <Link href="/tours" className="btn-luxury-gold">
-                <Eye size={16} />
-                3D Virtual Tours
+              <Link href="/hotels/avari-hotel-lahore" className="btn-luxury-gold">
+                <Sparkles size={16} />
+                Explore Immersive Suites
               </Link>
               <Link href="/hotels/avari-hotel-lahore" className="btn-luxury-outline">
                 Explore Properties
@@ -101,7 +101,7 @@ export default function HomePage() {
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <Star size={18} color="#F59E0B" fill="#F59E0B" />
-            <span style={{ color: '#0F172A', fontWeight: 600 }}>TripAdvisor Travelers' Choice 2026</span>
+            <span style={{ color: '#0F172A', fontWeight: 600 }}>TripAdvisor Travelers&apos; Choice 2026</span>
           </div>
         </div>
       </div>
@@ -143,10 +143,21 @@ export default function HomePage() {
         <div className="properties-duo-grid portfolio-property-grid">
           {activeProperties.map((property) => {
             const detailedProperty = PROPERTIES_DATA[property.slug];
-            const isReady = Boolean(detailedProperty && property.detailPath);
 
             return (
-              <div className="property-showcase-card" key={property.slug}>
+              <article
+                className="property-showcase-card property-showcase-card-link"
+                key={property.slug}
+                role="link"
+                tabIndex={0}
+                onClick={() => router.push(property.detailPath || `/hotels/${property.slug}`)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    router.push(property.detailPath || `/hotels/${property.slug}`);
+                  }
+                }}
+              >
                 <div className="property-img-box" style={{ backgroundImage: `url('${property.image}')` }}>
                   <div className="property-img-badge">
                     <Building2 size={12} style={{ display: 'inline', marginRight: '5px' }} />
@@ -166,17 +177,15 @@ export default function HomePage() {
                     <div className="property-feature-stat portfolio-source-stat"><Sparkles size={15} color="var(--avari-blue)" /><span>{property.sourceStatus}</span></div>
                   </div>
                   <div className="portfolio-card-actions">
-                    {isReady ? (
-                      <>
-                        <Link href={property.detailPath} className="btn-luxury-gold" style={{ flex: 1 }}>Explore property</Link>
-                        <Link href={`/tours?property=${property.slug}`} className="btn-luxury-outline" style={{ flex: 1 }}><Eye size={15} /> 3D tours</Link>
-                      </>
-                    ) : (
-                      <Link href="/account" className="btn-luxury-outline" style={{ width: '100%' }}>Request destination updates <ArrowRight size={15} /></Link>
-                    )}
+                    <Link href={property.detailPath || `/hotels/${property.slug}`} className="btn-luxury-outline" onClick={(event) => event.stopPropagation()}>
+                      <Eye size={15} /> View
+                    </Link>
+                    <Link href={`/booking?hotel=${property.slug}`} className="btn-luxury-gold" onClick={(event) => event.stopPropagation()}>
+                      Book now <ArrowRight size={15} />
+                    </Link>
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
@@ -198,7 +207,7 @@ export default function HomePage() {
               Next-Gen Guest Experience
             </span>
             <h3 style={{ fontSize: '2.4rem', color: '#0F172A', marginBottom: '14px', lineHeight: 1.2 }}>
-              Immerse Yourself in 3D Virtual Tours
+              Immerse Yourself in 360° Experiences
             </h3>
             <p style={{ fontSize: '1rem', color: '#475569', maxWidth: '640px', lineHeight: 1.6 }}>
               Inspect every detail of our Presidential Suites, Botticino marble jacuzzis, Dynasty Chinese Restaurant, and Grand Ballrooms. Switch between day and warm evening lighting, look around 360°, and explore spatial amenities.
@@ -206,12 +215,73 @@ export default function HomePage() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', flexShrink: 0 }}>
-            <Link href="/tours" className="btn-luxury-gold" style={{ padding: '16px 36px', fontSize: '0.9rem' }}>
+            <Link href="/hotels/avari-hotel-lahore" className="btn-luxury-gold" style={{ padding: '16px 36px', fontSize: '0.9rem' }}>
               <Compass size={20} />
-              Open 360° Tour Theater
+              Experience Hotel in 3D
             </Link>
             <div style={{ textAlign: 'center', fontSize: '0.78rem', color: '#64748B' }}>
               No app or headset required • Works on all devices
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Diversity & Harmony Banner (CSS Overlay with Official Logo) */}
+      <section style={{ width: '100%', marginBottom: '60px' }}>
+        <div style={{ 
+          width: '100%', 
+          overflow: 'hidden',
+          backgroundImage: `url('/images/avari-harmony-bg.jpg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          height: '400px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          position: 'relative'
+        }}>
+          <div style={{ position: 'relative', zIndex: 1, padding: '0 20px' }}>
+            <h2 style={{ 
+              fontFamily: 'var(--font-serif)', 
+              fontSize: '2.8rem', 
+              color: '#FFFFFF',
+              fontWeight: 500,
+              textShadow: '0 2px 10px rgba(0,0,0,0.3)',
+              marginBottom: '10px',
+              letterSpacing: '0.05em'
+            }}>
+              CELEBRATING CULTURE & HARMONY
+            </h2>
+            <div style={{ 
+              fontSize: '1.2rem', 
+              color: '#F8FAFC',
+              fontWeight: 300,
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              textShadow: '0 2px 5px rgba(0,0,0,0.4)',
+              marginBottom: '30px'
+            }}>
+              AT AVARI HOTELS
+            </div>
+            
+            {/* Using the Official Avari Logo */}
+            <div style={{ 
+              marginTop: '15px'
+            }}>
+              <img 
+                src="/images/avari-logo-dark.png" 
+                alt="Avari Hotels & Resorts"
+                style={{ 
+                  height: '60px', 
+                  width: 'auto', 
+                  filter: 'brightness(0) invert(1) drop-shadow(0 4px 8px rgba(0,0,0,0.4))' 
+                }}
+              />
+            </div>
+            <div style={{ marginTop: '15px', color: '#E2E8F0', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.1em' }}>
+              #AvariWorld
             </div>
           </div>
         </div>
@@ -269,7 +339,7 @@ export default function HomePage() {
                 Authentic Szechuan & Cantonese Cuisine
               </div>
               <p style={{ fontSize: '0.9rem', color: '#475569', lineHeight: 1.6, marginBottom: '20px' }}>
-                Lahore's legendary culinary institution for over 30 years. Renowned for authentic Dim Sum carts, roasted Peking duck, and imperial ambiance.
+                Lahore&apos;s legendary culinary institution for over 30 years. Renowned for authentic Dim Sum carts, roasted Peking duck, and imperial ambiance.
               </p>
               <Link href="/dining" className="btn-luxury-outline" style={{ width: '100%', padding: '10px' }}>
                 View Menu & Reserve Table
@@ -282,26 +352,33 @@ export default function HomePage() {
             background: '#FFFFFF',
             border: '1px solid #E2E8F0',
             borderRadius: '12px',
-            padding: '28px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
+            overflow: 'hidden',
             boxShadow: '0 8px 30px rgba(15, 23, 42, 0.05)'
           }}>
-            <div>
+            <div style={{
+              height: '220px',
+              backgroundImage: `url('/images/fujiyama-dining.jpg')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              position: 'relative'
+            }}>
               <div style={{
-                display: 'inline-block',
-                background: 'rgba(2, 124, 255, 0.08)',
+                position: 'absolute',
+                top: '12px',
+                left: '12px',
+                background: 'rgba(255, 255, 255, 0.95)',
                 color: 'var(--avari-blue)',
+                border: '1px solid rgba(2, 124, 255, 0.3)',
                 padding: '4px 10px',
                 borderRadius: '4px',
                 fontSize: '0.72rem',
                 fontWeight: 700,
-                textTransform: 'uppercase',
-                marginBottom: '14px'
+                textTransform: 'uppercase'
               }}>
                 Live Teppanyaki
               </div>
+            </div>
+            <div style={{ padding: '26px' }}>
               <h3 style={{ fontSize: '1.45rem', color: '#0F172A', marginBottom: '6px' }}>Fujiyama Japanese</h3>
               <div style={{ fontSize: '0.84rem', color: 'var(--avari-blue)', marginBottom: '12px', fontWeight: 600 }}>
                 Japanese Teppanyaki & Master Sushi Bar
@@ -309,10 +386,10 @@ export default function HomePage() {
               <p style={{ fontSize: '0.9rem', color: '#475569', lineHeight: 1.6, marginBottom: '20px' }}>
                 Watch master chefs prepare sizzling tenderloin and fresh sashimi before your eyes on live Teppanyaki grills, set in private minimalist tatami rooms.
               </p>
+              <Link href="/dining" className="btn-luxury-outline" style={{ width: '100%', padding: '10px' }}>
+                Explore Fujiyama
+              </Link>
             </div>
-            <Link href="/dining" className="btn-luxury-outline" style={{ width: '100%', padding: '10px' }}>
-              Explore Fujiyama
-            </Link>
           </div>
 
           {/* Dining Card 3: The Lakhnavi */}
@@ -320,26 +397,33 @@ export default function HomePage() {
             background: '#FFFFFF',
             border: '1px solid #E2E8F0',
             borderRadius: '12px',
-            padding: '28px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
+            overflow: 'hidden',
             boxShadow: '0 8px 30px rgba(15, 23, 42, 0.05)'
           }}>
-            <div>
+            <div style={{
+              height: '220px',
+              backgroundImage: `url('/images/lakhnavi-dining.jpg')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              position: 'relative'
+            }}>
               <div style={{
-                display: 'inline-block',
-                background: 'rgba(2, 124, 255, 0.08)',
+                position: 'absolute',
+                top: '12px',
+                left: '12px',
+                background: 'rgba(255, 255, 255, 0.95)',
                 color: 'var(--avari-blue)',
+                border: '1px solid rgba(2, 124, 255, 0.3)',
                 padding: '4px 10px',
                 borderRadius: '4px',
                 fontSize: '0.72rem',
                 fontWeight: 700,
-                textTransform: 'uppercase',
-                marginBottom: '14px'
+                textTransform: 'uppercase'
               }}>
                 Royal Heritage
               </div>
+            </div>
+            <div style={{ padding: '26px' }}>
               <h3 style={{ fontSize: '1.45rem', color: '#0F172A', marginBottom: '6px' }}>The Lakhnavi</h3>
               <div style={{ fontSize: '0.84rem', color: 'var(--avari-blue)', marginBottom: '12px', fontWeight: 600 }}>
                 Royal Avadhi & Mughlai Dum Pukht
@@ -347,10 +431,10 @@ export default function HomePage() {
               <p style={{ fontSize: '0.9rem', color: '#475569', lineHeight: 1.6, marginBottom: '20px' }}>
                 Melt-in-mouth Galawati kebabs, slow-cooked Dum Pukht biryanis, and classical sitar melodies honoring the royal Nawabs of Avadh.
               </p>
+              <Link href="/dining" className="btn-luxury-outline" style={{ width: '100%', padding: '10px' }}>
+                Explore The Lakhnavi
+              </Link>
             </div>
-            <Link href="/dining" className="btn-luxury-outline" style={{ width: '100%', padding: '10px' }}>
-              Explore The Lakhnavi
-            </Link>
           </div>
         </div>
       </section>
@@ -368,92 +452,7 @@ export default function HomePage() {
           <small>Membership benefits and terms are preview content pending Avari approval.</small>
         </div>
       </section>
-
-      {/* Luxury Global Footer (Deep Royal Navy Grounding) */}
-      <footer style={{
-        background: 'var(--bg-darker)',
-        borderTop: '1px solid var(--border-subtle)',
-        padding: '70px 32px 30px 32px'
-      }}>
-        <div style={{
-          maxWidth: '1400px',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '40px',
-          marginBottom: '50px'
-        }}>
-          <div>
-            <div className="brand-title" style={{ marginBottom: '12px' }}>
-              AVARI <span>HOTELS</span>
-            </div>
-            <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '20px' }}>
-              Setting the international standard for luxury hospitality in Pakistan since 1944. Offering guests bespoke comfort, world-class culinary art, and state-of-the-art 3D spatial previews.
-            </p>
-            <div style={{ fontSize: '0.8rem', color: 'var(--avari-gold)', fontWeight: 600 }}>
-              Official Demonstration for Avari Leadership
-            </div>
-          </div>
-
-          <div>
-            <h4 style={{ fontSize: '1.1rem', color: 'var(--avari-gold)', marginBottom: '16px' }}>
-              Avari Hotel Lahore (5★ Flagship)
-            </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.84rem', color: 'var(--text-muted)' }}>
-              <div>87 Shahrah-e-Quaid-e-Azam (The Mall), Lahore</div>
-              <div>Direct: +92 (42) 3636 6366</div>
-              <div>UAN: 111-282-747</div>
-              <div>Email: lahore@avari.com</div>
-            </div>
-          </div>
-
-          <div>
-            <h4 style={{ fontSize: '1.1rem', color: '#E05A47', marginBottom: '16px' }}>
-              Avari Xpress Gulberg (Boutique)
-            </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.84rem', color: 'var(--text-muted)' }}>
-              <div>1-E/II, Noor Jehan Road, Gulberg III, Lahore</div>
-              <div>Direct: +92 (42) 3575 5700</div>
-              <div>Email: xpress.gulberg@avari.com</div>
-            </div>
-          </div>
-
-          <div>
-            <h4 style={{ fontSize: '1.1rem', color: '#0F172A', marginBottom: '16px' }}>
-              Quick Links
-            </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.84rem', color: 'var(--text-muted)' }}>
-              <Link href="/tours" style={{ color: 'var(--avari-gold)' }}>✦ 3D Virtual Tours</Link>
-              <Link href="/hotels/avari-hotel-lahore">Avari Hotel Lahore</Link>
-              <Link href="/hotels/avari-xpress-gulberg">Avari Xpress Gulberg</Link>
-              <Link href="/dining">Restaurants & Dining</Link>
-              <Link href="/banquets">Banquets & Capacity Calculator</Link>
-              <Link href="/booking">Best Rate Booking</Link>
-            </div>
-          </div>
-        </div>
-
-        <div style={{
-          maxWidth: '1400px',
-          margin: '0 auto',
-          paddingTop: '24px',
-          borderTop: '1px solid var(--border-subtle)',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '12px',
-          fontSize: '0.78rem',
-          color: 'var(--text-muted)'
-        }}>
-          <div>
-            © 2026 Avari Hotels & Resorts. All Rights Reserved.
-          </div>
-          <div>
-            Demonstration of Next.js 3D Virtual Tour Integration for avari.com
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
+

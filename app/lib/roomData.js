@@ -26,7 +26,21 @@ export function getRoomPath(propertySlug, room) {
   return `/hotels/${propertySlug}/rooms/${slugifyRoomName(room.name)}`;
 }
 
+export function getRoomGallery(property, room) {
+  const propertyImage = property.coverImage || '/images/lahore-facade.jpg';
+  const roomImage = property.id === 'avari-lahore' ? '/images/suite-luxury.jpg' : '/images/gold-card/avari-gold-suite.jpg';
+
+  return [
+    { src: roomImage, alt: `${room.name} master bedroom`, label: 'Master Bedroom' },
+    { src: '/images/gold-card/avari-gold-vip-reception.jpg', alt: `${room.name} executive suite lounge`, label: 'Living Lounge & Suite' },
+    { src: '/images/gold-card/avari-gold-wellness.jpg', alt: `${room.name} ensuite marble bath and wellness`, label: 'Marble Bath & Wellness' },
+    { src: propertyImage, alt: `${property.name} grounds and setting`, label: 'Property Grounds' }
+  ];
+}
+
 export function normalizeRoomForComparison(propertySlug, room) {
+  const property = getPropertyBySlug(propertySlug);
+  const city = property ? property.location.split(',').pop().trim() : 'Unknown';
   const areaMatch = room.area?.match(/([\d.]+)\s*m²/i);
   const occupancyMatch = room.occupancy?.match(/\d+/);
 
@@ -34,6 +48,7 @@ export function normalizeRoomForComparison(propertySlug, room) {
     id: room.id,
     slug: slugifyRoomName(room.name),
     propertySlug,
+    city,
     name: room.name,
     tier: room.tier,
     areaM2: areaMatch ? Number(areaMatch[1]) : null,
@@ -54,3 +69,4 @@ export function getAllRooms() {
     property.rooms.map((room) => normalizeRoomForComparison(propertySlug, room))
   ));
 }
+
