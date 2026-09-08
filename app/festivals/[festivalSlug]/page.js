@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { ArrowLeft, CalendarDays, MapPin, UserRound } from 'lucide-react';
-import { getFestivalBySlug } from '../../data/festivalData';
+import { FESTIVALS, getFestivalBySlug } from '../../data/festivalData';
 
 export function generateStaticParams() {
-  return ['luminous-lahore', 'mountain-light-skardu', 'golden-table'].map((festivalSlug) => ({ festivalSlug }));
+  return FESTIVALS.map(({ slug: festivalSlug }) => ({ festivalSlug }));
 }
 
 export async function generateMetadata({ params }) {

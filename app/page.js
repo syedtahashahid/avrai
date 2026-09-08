@@ -163,7 +163,7 @@ export default function HomePage() {
                   <div className="property-features-row">
                     <div className="property-feature-stat"><MapPin size={15} color="var(--avari-gold)" /><span>{property.city}</span></div>
                     <div className="property-feature-stat"><Building2 size={15} color="var(--avari-gold)" /><span>{property.category}</span></div>
-                    <div className="property-feature-stat"><Sparkles size={15} color="var(--avari-gold)" /><span>{property.sourceStatus}</span></div>
+                    <div className="property-feature-stat portfolio-source-stat"><Sparkles size={15} color="var(--avari-blue)" /><span>{property.sourceStatus}</span></div>
                   </div>
                   <div className="portfolio-card-actions">
                     {isReady ? (

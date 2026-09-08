@@ -44,6 +44,45 @@ export default function BanquetsPage() {
         </div>
       </section>
 
+      <section className="banquet-showcase-section">
+        <div className="banquet-showcase-heading">
+          <div>
+            <div className="section-overhead">See the occasion before it begins</div>
+            <h2 className="section-main-heading">Rooms for remarkable gatherings.</h2>
+          </div>
+          <p>Move from atmosphere to logistics: browse the visual mood, open a 3D preview, then configure the room for your guest list.</p>
+        </div>
+
+        <div className="banquet-gallery-grid">
+          <article className="banquet-gallery-feature">
+            <div className="banquet-gallery-image" style={{ backgroundImage: "url('/images/lahore-facade.jpg')" }}>
+              <span>Property atmosphere</span>
+            </div>
+            <div className="banquet-gallery-copy">
+              <div className="section-overhead">Avari Hotel Lahore</div>
+              <h3>Heritage-scale celebrations</h3>
+              <p>Historic architecture, formal arrivals, and flexible spaces for weddings, summits, and diplomatic occasions.</p>
+              <Link href="/tours?property=avari-lahore&scene=venue-ballroom" className="btn-luxury-outline"><Eye size={15} /> Open 3D preview</Link>
+            </div>
+          </article>
+
+          <div className="banquet-gallery-stack">
+            <article className="banquet-gallery-tile">
+              <div className="banquet-gallery-image" style={{ backgroundImage: "url('/images/dynasty-dining.jpg')" }}>
+                <span>Dining and receptions</span>
+              </div>
+              <div><h3>Hosted tables</h3><p>Pair a venue with a considered dining programme.</p></div>
+            </article>
+            <article className="banquet-gallery-tile">
+              <div className="banquet-gallery-image" style={{ backgroundImage: "url('/images/suite-luxury.jpg')" }}>
+                <span>Guest journey</span>
+              </div>
+              <div><h3>Stay with the occasion</h3><p>Build room blocks and guest hospitality around the event.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       {/* Interactive Banquet Calculator for Avari Lahore */}
       <div style={{ padding: '40px 0' }}>
         <BanquetCalc

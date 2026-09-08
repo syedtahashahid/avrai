@@ -12,7 +12,7 @@ import WellnessHub from '../../components/WellnessHub';
 import BookingModal from '../../components/BookingModal';
 import TableModal from '../../components/TableModal';
 import { PROPERTIES_DATA } from '../../data/propertiesData';
-import { Building2, MapPin, Phone, Mail, Star, ShieldCheck, Eye, Sparkles } from 'lucide-react';
+import { MapPin, Phone } from 'lucide-react';
 
 export default function AvariXpressGulbergPage() {
   const property = PROPERTIES_DATA['avari-xpress-gulberg'];
@@ -66,36 +66,9 @@ export default function AvariXpressGulbergPage() {
       >
         <div className="hero-gradient-overlay" />
 
-        <div className="hero-content-box" style={{ marginBottom: '30px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-            <span className="gold-badge" style={{ color: '#E05A47', borderColor: '#E05A47' }}>
-              <Building2 size={14} />
-              4-Star Contemporary Boutique & Business
-            </span>
-            <span style={{ fontSize: '0.85rem', color: '#F59E0B', display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <Star size={14} fill="#F59E0B" />
-              4.6 TripAdvisor Excellence
-            </span>
-          </div>
-
-          <h1 className="hero-main-title">
-            Avari Xpress Gulberg
-          </h1>
-
-          <p className="hero-sub-text" style={{ fontStyle: 'italic', color: '#FF8A65' }}>
-            "{property.tagline}"
-          </p>
-
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '24px', flexWrap: 'wrap', fontSize: '0.86rem', color: 'var(--text-muted)' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <MapPin size={15} color="#E05A47" />
-              1-E/II, Noor Jehan Road, Gulberg III, Lahore
-            </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Phone size={15} color="#E05A47" />
-              +92 (42) 3575 5700
-            </span>
-          </div>
+        <div className="property-contact-strip property-contact-strip-xpress">
+          <span><MapPin size={14} /> 1-E/II, Noor Jehan Road, Gulberg III, Lahore</span>
+          <span><Phone size={14} /> +92 (42) 3575 5700</span>
         </div>
 
         {/* Dedicated Booking Bar pre-selected for Avari Xpress */}

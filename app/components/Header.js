@@ -4,20 +4,17 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  Crown,
-  Search,
   Calendar,
   Presentation,
-  Building2,
   ChevronDown,
   Sparkles,
   PhoneCall,
-  Menu,
-  X,
-  ExternalLink
+  ExternalLink,
+  UserRound
 } from 'lucide-react';
 import PitchModeOverlay from './PitchModeOverlay';
 import { getTravelClickBookingUrl } from '../utils/bookingUrl';
+import { PORTFOLIO_PROPERTIES, PORTFOLIO_REGIONS } from '../data/portfolioData';
 
 export default function Header() {
   const pathname = usePathname();
@@ -97,6 +94,15 @@ export default function Header() {
               <span>Book Now</span>
               <ExternalLink size={12} style={{ opacity: 0.85 }} />
             </a>
+
+            <Link
+              href="/account"
+              className="header-account-link"
+              aria-label="Open your Avari account"
+            >
+              <UserRound size={14} />
+              <span>Sign in</span>
+            </Link>
           </div>
         </div>
 
@@ -119,39 +125,35 @@ export default function Header() {
                 </div>
 
                 {hotelsDropdownOpen && (
-                  <div className="bk-dropdown-menu" style={{ width: '380px' }}>
-                    <div style={{ padding: '8px 18px', fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--avari-gold)', fontWeight: 700 }}>
-                      Lahore Destinations
-                    </div>
-                    <Link
-                      href="/hotels/avari-hotel-lahore"
-                      className="bk-dropdown-item"
-                      style={{ display: 'block' }}
-                      onClick={() => setHotelsDropdownOpen(false)}
-                    >
-                      <div className="bk-hotel-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <Crown size={15} color="var(--avari-gold)" />
-                        Avari Hotel Lahore
-                      </div>
-                      <div className="bk-hotel-sub">
-                        5-Star Luxury Heritage Flagship • 87 The Mall Road
-                      </div>
-                    </Link>
+                  <div className="bk-dropdown-menu portfolio-dropdown">
+                    <div className="portfolio-dropdown-heading">Explore every Avari destination</div>
+                    <div className="portfolio-dropdown-grid">
+                      {PORTFOLIO_REGIONS.map((region) => (
+                        <div className="portfolio-dropdown-region" key={region.id}>
+                          <div className="portfolio-dropdown-region-title">{region.label}</div>
+                          {region.properties.map((propertyId) => {
+                            const property = PORTFOLIO_PROPERTIES[propertyId];
+                            const href = property.detailPath || `/account?destination=${property.slug}`;
 
-                    <Link
-                      href="/hotels/avari-xpress-gulberg"
-                      className="bk-dropdown-item"
-                      style={{ display: 'block' }}
-                      onClick={() => setHotelsDropdownOpen(false)}
-                    >
-                      <div className="bk-hotel-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <Building2 size={15} color="#E05A47" />
-                        Avari Xpress Gulberg
-                      </div>
-                      <div className="bk-hotel-sub">
-                        4-Star Contemporary Boutique • Noor Jehan Road, Gulberg III
-                      </div>
-                    </Link>
+                            return (
+                              <Link
+                                href={href}
+                                className="portfolio-dropdown-property"
+                                key={property.slug}
+                                onClick={() => setHotelsDropdownOpen(false)}
+                              >
+                                <span className="portfolio-dropdown-property-name">
+                                  {property.name}
+                                </span>
+                                <span className="portfolio-dropdown-property-meta">
+                                  {property.category} · {property.status}
+                                </span>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
               </li>
@@ -213,14 +215,6 @@ export default function Header() {
                 </Link>
               </li>
 
-              <li>
-                <Link
-                  href="/account"
-                  className={`nav-item-link ${pathname.startsWith('/account') ? 'active' : ''}`}
-                >
-                  Account
-                </Link>
-              </li>
             </ul>
           </nav>
 

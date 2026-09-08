@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { getTravelClickBookingUrl, formatTravelClickDate, calculateStayLength } from '../utils/bookingUrl';
+import { PORTFOLIO_PROPERTIES } from '../data/portfolioData';
 
 function BookingContent() {
   const searchParams = useSearchParams();
@@ -39,8 +40,10 @@ function BookingContent() {
     }
   }, [hotelParam]);
 
-  const property = PROPERTIES_DATA[selectedHotel] || PROPERTIES_DATA['avari-lahore'];
+  const property = PROPERTIES_DATA[selectedHotel] || null;
+  const portfolioProperty = PORTFOLIO_PROPERTIES[selectedHotel] || PORTFOLIO_PROPERTIES['avari-lahore'];
   const isLahore = selectedHotel === 'avari-lahore';
+  const hasRoomInventory = Boolean(property?.rooms?.length);
 
   const stayLength = calculateStayLength(checkinParam, checkoutParam);
   const travelClickUrl = getTravelClickBookingUrl({
@@ -74,61 +77,37 @@ function BookingContent() {
               Live Reservation Simulator & Rates
             </div>
             <h1 style={{ fontSize: '1.9rem', color: '#0F172A', margin: '4px 0' }}>
-              {property.name}
+              {property?.name || portfolioProperty.name}
             </h1>
             <div style={{ fontSize: '0.86rem', color: '#64748B' }}>
               {checkinParam} → {checkoutParam} ({stayLength} Night{stayLength > 1 ? 's' : ''}) • {adultsParam} Adults, {roomsParam} Room
             </div>
           </div>
 
-          {/* Property Quick Toggle */}
-          <div style={{
-            display: 'flex',
-            background: '#F1F5F9',
-            padding: '4px',
-            borderRadius: '8px',
-            border: '1px solid #E2E8F0',
-            gap: '4px'
-          }}>
-            <button
-              onClick={() => setSelectedHotel('avari-lahore')}
-              style={{
-                padding: '8px 18px',
-                borderRadius: '6px',
-                border: 'none',
-                background: isLahore ? 'var(--avari-blue)' : 'transparent',
-                color: isLahore ? '#FFFFFF' : '#334155',
-                fontWeight: 700,
-                fontSize: '0.8rem',
-                cursor: 'pointer',
-                transition: 'var(--transition)'
-              }}
-            >
-              Avari Hotel Lahore (5★)
-            </button>
+        </div>
+      </div>
 
-            <button
-              onClick={() => setSelectedHotel('avari-xpress-gulberg')}
-              style={{
-                padding: '8px 18px',
-                borderRadius: '6px',
-                border: 'none',
-                background: !isLahore ? 'var(--avari-blue)' : 'transparent',
-                color: !isLahore ? '#FFFFFF' : '#334155',
-                fontWeight: 700,
-                fontSize: '0.8rem',
-                cursor: 'pointer',
-                transition: 'var(--transition)'
-              }}
-            >
-              Avari Xpress Gulberg (4★)
-            </button>
+      <div className="booking-destination-strip">
+        <div className="booking-destination-inner">
+          <div className="booking-destination-label">Choose an Avari destination</div>
+          <div className="booking-destination-grid">
+            {Object.values(PORTFOLIO_PROPERTIES).map((destination) => (
+              <button
+                type="button"
+                key={destination.slug}
+                className={`booking-destination-button ${selectedHotel === destination.slug ? 'active' : ''}`}
+                onClick={() => setSelectedHotel(destination.slug)}
+              >
+                <strong>{destination.name}</strong>
+                <span>{destination.city}</span>
+              </button>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Official TravelClick Redirection Banner */}
-      <div style={{ maxWidth: '1400px', margin: '30px auto 0 auto', padding: '0 32px' }}>
+      {hasRoomInventory ? <div style={{ maxWidth: '1400px', margin: '30px auto 0 auto', padding: '0 32px' }}>
         <div style={{
           background: 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)',
           border: '1px solid rgba(2, 124, 255, 0.3)',
@@ -165,10 +144,17 @@ function BookingContent() {
             <ExternalLink size={16} />
           </a>
         </div>
-      </div>
+      </div> : (
+        <div className="booking-preview-state">
+          <div className="gold-badge">Portfolio destination</div>
+          <h2>{portfolioProperty.name} is ready to be connected.</h2>
+          <p>We have reserved this destination in the global booking experience. Room categories, live rates, and the approved booking-provider connection will appear here after the property fact sheet is connected.</p>
+          <Link href="/account" className="btn-luxury-outline">Request destination updates <ArrowRight size={15} /></Link>
+        </div>
+      )}
 
       {/* Available Room List */}
-      <div className="section-container" style={{ paddingTop: '50px' }}>
+      {hasRoomInventory && <div className="section-container" style={{ paddingTop: '50px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
           {property.rooms.map((room) => (
             <div
@@ -268,13 +254,13 @@ function BookingContent() {
             </div>
           ))}
         </div>
-      </div>
+      </div>}
 
       <BookingModal
         isOpen={!!activeModalRoom}
         onClose={() => setActiveModalRoom(null)}
         selectedRoom={activeModalRoom}
-        property={property}
+        property={property || PROPERTIES_DATA['avari-lahore']}
       />
     </div>
   );

@@ -12,7 +12,7 @@ import WellnessHub from '../../components/WellnessHub';
 import BookingModal from '../../components/BookingModal';
 import TableModal from '../../components/TableModal';
 import { PROPERTIES_DATA } from '../../data/propertiesData';
-import { Crown, MapPin, Phone, Mail, Star, ShieldCheck, Eye, Sparkles } from 'lucide-react';
+import { MapPin, Phone } from 'lucide-react';
 
 export default function AvariLahorePage() {
   const property = PROPERTIES_DATA['avari-lahore'];
@@ -66,36 +66,9 @@ export default function AvariLahorePage() {
       >
         <div className="hero-gradient-overlay" />
 
-        <div className="hero-content-box" style={{ marginBottom: '30px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-            <span className="gold-badge">
-              <Crown size={14} />
-              5-Star Luxury Heritage Flagship
-            </span>
-            <span style={{ fontSize: '0.85rem', color: '#F59E0B', display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <Star size={14} fill="#F59E0B" />
-              4.8 TripAdvisor Excellence
-            </span>
-          </div>
-
-          <h1 className="hero-main-title">
-            Avari Hotel Lahore
-          </h1>
-
-          <p className="hero-sub-text" style={{ fontStyle: 'italic', color: 'var(--avari-gold-light)' }}>
-            "{property.tagline}"
-          </p>
-
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '24px', flexWrap: 'wrap', fontSize: '0.86rem', color: 'var(--text-muted)' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <MapPin size={15} color="var(--avari-gold)" />
-              87 The Mall Road, Lahore
-            </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Phone size={15} color="var(--avari-gold)" />
-              +92 (42) 3636 6366 / 111-282-747
-            </span>
-          </div>
+        <div className="property-contact-strip property-contact-strip-lahore">
+          <span><MapPin size={14} /> 87 The Mall Road, Lahore</span>
+          <span><Phone size={14} /> +92 (42) 3636 6366 / 111-282-747</span>
         </div>
 
         {/* Dedicated Booking Bar pre-selected for Avari Lahore */}
