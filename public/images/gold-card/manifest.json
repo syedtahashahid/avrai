@@ -1,0 +1,87 @@
+{
+  "membership": "Avari Gold Card",
+  "brand": "Avari Hotels & Resorts",
+  "folderPath": "/images/gold-card",
+  "assets": [
+    {
+      "id": "hero-banner",
+      "filename": "avari-gold-hero-banner.jpg",
+      "path": "/images/gold-card/avari-gold-hero-banner.jpg",
+      "title": "Avari Gold Card VIP Membership Hero Banner",
+      "category": "Banner / Hero",
+      "aspectRatio": "16:9",
+      "suggestedUse": "Landing page hero background, full-width promotional callout banner, membership club marquee",
+      "alt": "Avari Gold Card VIP Membership Banner with glowing gold particles and typography"
+    },
+    {
+      "id": "card-3d-mockup",
+      "filename": "avari-gold-card-3d.jpg",
+      "path": "/images/gold-card/avari-gold-card-3d.jpg",
+      "title": "Avari Gold Card 3D Metallic Mockup",
+      "category": "Product / Showcase",
+      "aspectRatio": "16:9",
+      "suggestedUse": "Main visual focal point for the Gold Card section, interactive 3D card tilt effect, pricing/tier comparison card",
+      "alt": "Ultra-luxury metallic Avari Gold Card floating on black marble with golden reflection"
+    },
+    {
+      "id": "welcome-kit",
+      "filename": "avari-gold-welcome-kit.jpg",
+      "path": "/images/gold-card/avari-gold-welcome-kit.jpg",
+      "title": "Luxury Welcome Kit & Unboxing Presentation",
+      "category": "Experience / Unboxing",
+      "aspectRatio": "16:9",
+      "suggestedUse": "'What You Receive' section, onboarding modal, membership package showcase",
+      "alt": "Avari Gold luxury velvet unboxing gift box with gold card, welcome letter, and keyholder"
+    },
+    {
+      "id": "card-tiers",
+      "filename": "avari-gold-black-tiers.jpg",
+      "path": "/images/gold-card/avari-gold-black-tiers.jpg",
+      "title": "Avari Gold & Black Elite Tier Cards",
+      "category": "Tiers / Comparison",
+      "aspectRatio": "16:9",
+      "suggestedUse": "Tier selection grid, comparison between Gold and Black Elite VIP membership levels",
+      "alt": "Avari Gold Card and Avari Black Elite Card displayed side-by-side on black velvet"
+    },
+    {
+      "id": "dining-privilege",
+      "filename": "avari-gold-dining.jpg",
+      "path": "/images/gold-card/avari-gold-dining.jpg",
+      "title": "Fine Dining & Culinary Privileges",
+      "category": "Benefits / Dining",
+      "aspectRatio": "16:9",
+      "suggestedUse": "Dining discounts benefit card (complimentary Sunday brunch, Dynasty fine dining discounts, voucher redemption)",
+      "alt": "Candlelit fine dining table setting at Avari with Gold Card receipt holder"
+    },
+    {
+      "id": "suite-privilege",
+      "filename": "avari-gold-suite.jpg",
+      "path": "/images/gold-card/avari-gold-suite.jpg",
+      "title": "Complimentary Stays & Presidential Suite Upgrades",
+      "category": "Benefits / Accommodation",
+      "aspectRatio": "16:9",
+      "suggestedUse": "Complimentary room nights benefit card, guaranteed late check-out, suite upgrade showcase",
+      "alt": "Opulent luxury hotel suite at Avari with skyline view, champagne on ice, and Gold Card welcome holder"
+    },
+    {
+      "id": "wellness-perk",
+      "filename": "avari-gold-wellness.jpg",
+      "path": "/images/gold-card/avari-gold-wellness.jpg",
+      "title": "Health Club, Spa & Pool Oasis Access",
+      "category": "Benefits / Wellness",
+      "aspectRatio": "16:9",
+      "suggestedUse": "Health club, swimming pool, sauna, and spa wellness privileges section",
+      "alt": "Avari Hotels illuminated heated outdoor pool, cabanas, and lounge at twilight"
+    },
+    {
+      "id": "vip-reception",
+      "filename": "avari-gold-vip-reception.jpg",
+      "path": "/images/gold-card/avari-gold-vip-reception.jpg",
+      "title": "Priority Check-in & Dedicated Concierge Reception",
+      "category": "Benefits / Service",
+      "aspectRatio": "16:9",
+      "suggestedUse": "VIP concierge service highlight, express check-in counter, personalized hospitality experience",
+      "alt": "Avari Gold Member VIP reception desk with guest receiving welcome envelope and card"
+    }
+  ]
+}
