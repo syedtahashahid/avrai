@@ -14,7 +14,7 @@ export default function DiningPage() {
   const [selectedVenue, setSelectedVenue] = useState(null);
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="dining-page" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Header />
 
       {/* Hero Banner with Dynasty image */}
@@ -49,7 +49,7 @@ export default function DiningPage() {
           </p>
         </div>
 
-        <div style={{
+        <div className="dining-venue-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
           gap: '30px',
@@ -58,6 +58,7 @@ export default function DiningPage() {
           {lahoreDining.map((venue) => (
             <div
               key={venue.id}
+              className="dining-venue-card"
               style={{
                 background: 'var(--bg-card)',
                 border: '1px solid var(--border-subtle)',
@@ -146,7 +147,7 @@ export default function DiningPage() {
           </p>
         </div>
 
-        <div style={{
+        <div className="dining-venue-grid dining-venue-grid-xpress" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
           gap: '30px'
@@ -154,6 +155,7 @@ export default function DiningPage() {
           {xpressDining.map((venue) => (
             <div
               key={venue.id}
+              className="dining-venue-card"
               style={{
                 background: 'var(--bg-card)',
                 border: '1px solid var(--border-subtle)',

@@ -888,6 +888,296 @@ a {
 }
 
 /* -------------------------------------------------------------
+   DINING AND BANQUET EDITORIAL SURFACES
+   ------------------------------------------------------------- */
+
+.dining-page {
+  background: #F8FAFC;
+}
+
+.dining-page .section-container {
+  max-width: 1480px;
+}
+
+.dining-page .section-header-center {
+  margin-bottom: 38px;
+}
+
+.dining-page .section-main-heading {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dining-venue-grid {
+  align-items: stretch;
+}
+
+.dining-venue-card {
+  position: relative;
+  overflow: hidden;
+  border-color: #DCE5EF !important;
+  border-radius: 4px !important;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.dining-venue-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(2, 124, 255, 0.45) !important;
+  box-shadow: 0 20px 44px rgba(2, 124, 255, 0.11);
+}
+
+.dining-venue-card h3 {
+  letter-spacing: 0;
+}
+
+.dining-venue-card p {
+  max-width: 58ch;
+}
+
+.dining-venue-card .gold-badge {
+  border-radius: 2px;
+  letter-spacing: 0.1em;
+}
+
+.dining-venue-grid-xpress {
+  padding-top: 10px;
+}
+
+.banquet-showcase-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 32px 20px;
+}
+
+.banquet-showcase-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 34px;
+  margin-bottom: 30px;
+}
+
+.banquet-showcase-heading .section-main-heading {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.banquet-showcase-heading > p {
+  max-width: 480px;
+  color: #64748B;
+  font-size: 0.94rem;
+  line-height: 1.75;
+}
+
+.banquet-gallery-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 20px;
+}
+
+.banquet-gallery-feature,
+.banquet-gallery-tile {
+  overflow: hidden;
+  background: #FFFFFF;
+  border: 1px solid #DCE5EF;
+  border-radius: 5px;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
+}
+
+.banquet-gallery-image {
+  position: relative;
+  min-height: 250px;
+  background-position: center;
+  background-size: cover;
+}
+
+.banquet-gallery-feature .banquet-gallery-image {
+  min-height: 390px;
+}
+
+.banquet-gallery-image::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.04), rgba(15, 23, 42, 0.54));
+}
+
+.banquet-gallery-image span {
+  position: absolute;
+  z-index: 1;
+  right: 16px;
+  bottom: 16px;
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.banquet-gallery-copy {
+  padding: 28px;
+}
+
+.banquet-gallery-copy h3,
+.banquet-gallery-tile h3 {
+  margin: 7px 0;
+  color: #0F172A;
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.banquet-gallery-copy p,
+.banquet-gallery-tile p {
+  margin-bottom: 20px;
+  color: #64748B;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.banquet-gallery-stack {
+  display: grid;
+  gap: 20px;
+}
+
+.banquet-gallery-tile {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+}
+
+.banquet-gallery-tile .banquet-gallery-image {
+  min-height: 100%;
+}
+
+.banquet-gallery-tile > div:last-child {
+  align-self: center;
+  padding: 22px;
+}
+
+.booking-destination-strip {
+  background: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.booking-destination-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 32px 20px;
+}
+
+.booking-destination-label {
+  margin-bottom: 12px;
+  color: var(--avari-blue);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.booking-destination-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.booking-destination-button {
+  min-height: 62px;
+  padding: 10px 12px;
+  border: 1px solid #E2E8F0;
+  background: #F8FAFC;
+  color: #334155;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition);
+}
+
+.booking-destination-button:hover,
+.booking-destination-button.active {
+  border-color: var(--avari-blue);
+  background: var(--avari-blue-tint);
+  color: var(--avari-blue-dark);
+}
+
+.booking-destination-button strong,
+.booking-destination-button span {
+  display: block;
+}
+
+.booking-destination-button strong {
+  font-family: var(--font-serif);
+  font-size: 0.96rem;
+  font-weight: 500;
+}
+
+.booking-destination-button span {
+  margin-top: 3px;
+  color: #64748B;
+  font-size: 0.7rem;
+}
+
+.booking-preview-state {
+  max-width: 900px;
+  margin: 48px auto 10px;
+  padding: 52px 42px;
+  background: #FFFFFF;
+  border: 1px solid #DCE5EF;
+  text-align: center;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
+}
+
+.booking-preview-state h2 {
+  margin: 15px 0 10px;
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+
+.booking-preview-state p {
+  max-width: 620px;
+  margin: 0 auto 24px;
+  color: #64748B;
+  line-height: 1.75;
+}
+
+@media (max-width: 900px) {
+  .banquet-showcase-heading,
+  .banquet-gallery-grid {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .booking-destination-grid {
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .banquet-showcase-section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .banquet-gallery-tile {
+    display: block;
+  }
+
+  .banquet-gallery-tile .banquet-gallery-image {
+    min-height: 210px;
+  }
+
+  .booking-destination-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .booking-destination-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* -------------------------------------------------------------
    GOLD CARD MEMBERSHIP AND EXPERIENCES
    ------------------------------------------------------------- */
 
