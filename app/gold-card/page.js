@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Check, Crown, Sparkles, UserRound } from 'lucide-react';
 import Header from '../components/Header';
-import { GOLD_CARD_BENEFITS, GOLD_CARD_STATUS, GOLD_CARD_TIERS } from '../data/membershipData';
+import { GOLD_CARD_BENEFITS, GOLD_CARD_TIERS } from '../data/membershipData';
 
 export const metadata = {
   title: 'Avari Gold Card | Avari Hotels & Resorts',

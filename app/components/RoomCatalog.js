@@ -13,6 +13,9 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { getTravelClickBookingUrl } from '../utils/bookingUrl';
+import Link from 'next/link';
+import { getRoomPath } from '../lib/roomData';
+import { recordBookingActivity } from '../lib/demoStore';
 
 export default function RoomCatalog({
   property,
@@ -189,6 +192,13 @@ export default function RoomCatalog({
                   </div>
 
                   <div style={{ display: 'flex', gap: '8px' }}>
+                    <Link
+                      href={getRoomPath(property.id, room)}
+                      className="luxury-btn-outline"
+                      style={{ padding: '9px 15px', fontSize: '0.8rem' }}
+                    >
+                      Details
+                    </Link>
                     <button
                       onClick={() => onLaunchTour(room)}
                       className={isCurrentlyActiveInTour ? 'luxury-btn-gold' : 'luxury-btn-outline'}
@@ -206,6 +216,7 @@ export default function RoomCatalog({
                       href={getTravelClickBookingUrl({ hotelId: property.id, adults: 2 })}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => recordBookingActivity({ property: property.name, hotelId: property.id, room: room.name, status: 'provider-handoff', source: 'room-catalog' })}
                       className="luxury-btn-gold"
                       style={{
                         padding: '9px 15px',

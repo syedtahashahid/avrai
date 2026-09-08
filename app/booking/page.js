@@ -22,6 +22,7 @@ import {
 import Link from 'next/link';
 import { getTravelClickBookingUrl, formatTravelClickDate, calculateStayLength } from '../utils/bookingUrl';
 import { PORTFOLIO_PROPERTIES } from '../data/portfolioData';
+import { recordBookingActivity } from '../lib/demoStore';
 
 function BookingContent() {
   const searchParams = useSearchParams();
@@ -225,6 +226,8 @@ function BookingContent() {
                     href={travelClickUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => recordBookingActivity({ property: property?.name || portfolioProperty.name, hotelId: selectedHotel, status: 'provider-handoff', source: 'booking-results', checkIn: checkinParam, checkOut: checkoutParam })}
+                    onClick={() => recordBookingActivity({ property: property?.name || portfolioProperty.name, hotelId: selectedHotel, status: 'provider-handoff', source: 'rate-card', room: room.name, checkIn: checkinParam, checkOut: checkoutParam })}
                     className="btn-luxury-gold"
                     style={{
                       width: '100%',

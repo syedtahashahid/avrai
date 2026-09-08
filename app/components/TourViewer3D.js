@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import { getRoomTexture } from '../data/textureGen';
+import { createSceneManifest } from '../lib/sceneManifest';
 import {
   Maximize2,
   Minimize2,
@@ -59,6 +60,7 @@ export default function TourViewer3D({
   const [currentHeadingDeg, setCurrentHeadingDeg] = useState(0);
 
   const isLahore = property.id === 'avari-lahore';
+  const sceneManifest = currentRoom ? createSceneManifest({ propertySlug: property.id, property, room: currentRoom }) : null;
 
   // -------------------------------------------------------------
   // THREE.JS INITIALIZATION
@@ -94,7 +96,7 @@ export default function TourViewer3D({
     const geometry = new THREE.SphereGeometry(500, 60, 40);
     geometry.scale(-1, 1, 1); // Invert inside-out for 360 viewer
 
-    const initialTexture = getRoomTexture(currentRoom.tourSceneKey, lightingMode);
+    const initialTexture = getRoomTexture(sceneManifest?.fallbackSceneKey || currentRoom.tourSceneKey, lightingMode);
     const material = new THREE.MeshBasicMaterial({
       map: initialTexture
     });
@@ -136,11 +138,11 @@ export default function TourViewer3D({
       setCurrentHeadingDeg(normalizedLon);
 
       // Project 3D Hotspots to 2D Screen Positions
-      if (currentRoom?.hotspots && container) {
+      if (sceneManifest?.hotspots && container) {
         const cWidth = container.clientWidth;
         const cHeight = container.clientHeight;
 
-        const projected = currentRoom.hotspots.map((spot) => {
+        const projected = sceneManifest.hotspots.map((spot) => {
           const sPhi = THREE.MathUtils.degToRad(90 - spot.pitch);
           const sTheta = THREE.MathUtils.degToRad(spot.yaw);
 
@@ -195,7 +197,8 @@ export default function TourViewer3D({
   // Update Texture when Room or Lighting Mode changes
   useEffect(() => {
     if (!sphereMeshRef.current || !currentRoom) return;
-    const newTex = getRoomTexture(currentRoom.tourSceneKey, lightingMode);
+    const manifest = createSceneManifest({ propertySlug: property.id, property, room: currentRoom });
+    const newTex = getRoomTexture(manifest.fallbackSceneKey, lightingMode);
     sphereMeshRef.current.material.map = newTex;
     sphereMeshRef.current.material.needsUpdate = true;
     setSelectedHotspot(null);

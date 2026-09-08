@@ -133,7 +133,7 @@ export default function Header() {
                           <div className="portfolio-dropdown-region-title">{region.label}</div>
                           {region.properties.map((propertyId) => {
                             const property = PORTFOLIO_PROPERTIES[propertyId];
-                            const href = property.detailPath || `/account?destination=${property.slug}`;
+                            const href = property.detailPath || `/hotels/${property.slug}`;
 
                             return (
                               <Link
@@ -212,6 +212,15 @@ export default function Header() {
                   className={`nav-item-link ${pathname.startsWith('/festivals') ? 'active' : ''}`}
                 >
                   Experiences
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/compare"
+                  className={`nav-item-link ${pathname === '/compare' ? 'active' : ''}`}
+                >
+                  Compare rooms
                 </Link>
               </li>
 
