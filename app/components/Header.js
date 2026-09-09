@@ -22,9 +22,26 @@ export default function Header() {
   const [hotelsDropdownOpen, setHotelsDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const isGoldTheme = pathname === '/gold-card';
+
   return (
     <>
-      <header className="site-header">
+      {isGoldTheme && (
+        <style dangerouslySetInnerHTML={{ __html: `
+          .site-header.gold-theme .nav-item-link,
+          .site-header.gold-theme .header-account-link {
+            color: #fff4db !important;
+          }
+          .site-header.gold-theme .nav-item-link:hover,
+          .site-header.gold-theme .header-account-link:hover {
+            color: #d5aa52 !important;
+          }
+          .site-header.gold-theme .brand-subtitle {
+            color: #b9ab91 !important;
+          }
+        `}} />
+      )}
+      <header className={`site-header ${isGoldTheme ? 'gold-theme' : ''}`} style={isGoldTheme ? { background: '#0a0806', borderBottom: '1px solid rgba(213, 170, 82, 0.2)' } : {}}>
         {/* Top Header Bar */}
         <div className="header-top-bar">
           {/* Left: Search / Contact */}
@@ -37,7 +54,7 @@ export default function Header() {
               href="/support"
               style={{
                 fontSize: '0.74rem',
-                color: 'var(--avari-blue)',
+                color: isGoldTheme ? '#d5aa52' : 'var(--avari-blue)',
                 fontWeight: 600,
                 textDecoration: 'none'
               }}
@@ -57,7 +74,8 @@ export default function Header() {
               style={{
                 height: '46px',
                 width: 'auto',
-                objectFit: 'contain'
+                objectFit: 'contain',
+                filter: isGoldTheme ? 'invert(1) brightness(100) sepia(1) hue-rotate(10deg) saturate(3)' : 'none'
               }}
             />
             <div>
@@ -136,7 +154,7 @@ export default function Header() {
                                   {property.name}
                                 </span>
                                 <span className="portfolio-dropdown-property-meta">
-                                  {property.category} · {property.status}
+                                  {property.category}
                                 </span>
                               </Link>
                             );
@@ -205,9 +223,6 @@ export default function Header() {
             </ul>
           </nav>
 
-          <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
-            Avari World Traveler Club ✦
-          </div>
         </div>
       </header>
     </>

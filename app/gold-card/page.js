@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight, Check, Crown, Sparkles, UserRound } from 'lucide-react';
+import DigitalWalletButtons from '../components/DigitalWalletButtons';
 
 import { GOLD_CARD_BENEFITS, GOLD_CARD_TIERS } from '../data/membershipData';
 
@@ -10,7 +11,7 @@ export const metadata = {
 
 export default function GoldCardPage() {
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'linear-gradient(180deg, #110d07 0%, #060402 100%)' }}>
       
       <main>
         <section className="gold-hero">
@@ -58,8 +59,9 @@ export default function GoldCardPage() {
           <div className="gold-showcase-copy">
             <span className="gold-section-label">The welcome</span>
             <h2>Arrive with a little more anticipation.</h2>
-            <p>Your future member area will bring together your card status, stay history, saved rooms, festival registrations, and benefits in one quiet place.</p>
-            <Link href="/account" className="gold-outline-button">Open member area <ArrowRight size={16} /></Link>
+            <p>Your future member area will bring together your card status, stay history, saved rooms, festival registrations, and benefits in one quiet place. Add your preview card to your digital wallet to keep your status close.</p>
+            <DigitalWalletButtons />
+            <Link href="/account" className="gold-outline-button" style={{ marginTop: '20px' }}>Open member area <ArrowRight size={16} /></Link>
           </div>
         </section>
 
