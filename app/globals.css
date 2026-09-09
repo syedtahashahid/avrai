@@ -5,80 +5,147 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap');
 
-:root {
-  /* Official Avari Light Blue Palette */
-  --avari-blue: #027CFF;
-  --avari-blue-hover: #0066D6;
-  --avari-blue-light: #027CFF;
-  --avari-blue-bright: #38A8FF;
-  --avari-blue-dark: #0056B3;
-  --avari-blue-tint: rgba(2, 124, 255, 0.08);
-  --avari-blue-border: rgba(2, 124, 255, 0.25);
+/* Theme 1: Sovereign Obsidian & Antique Gold (Default) */
+:root, html[data-theme="obsidian-gold"] {
+  --avari-blue: #D4AF37;
+  --avari-blue-hover: #E5BE48;
+  --avari-blue-light: #D4AF37;
+  --avari-blue-bright: #F3E5AB;
+  --avari-blue-dark: #C5A059;
+  --avari-blue-tint: rgba(212, 175, 55, 0.12);
+  --avari-blue-border: rgba(212, 175, 55, 0.35);
 
-  /* Legacy mappings to preserve compatibility */
-  --avari-gold: #027CFF;
-  --avari-gold-hover: #0066D6;
-  --avari-gold-light: #027CFF;
-  --avari-gold-dark: #0056B3;
+  --avari-gold: #D4AF37;
+  --avari-gold-hover: #E5BE48;
+  --avari-gold-light: #D4AF37;
+  --avari-gold-dark: #C5A059;
 
-  /* Luxury Light Theme Backgrounds */
-  --bg-dark: #FFFFFF;
-  --bg-darker: #F8FAFC;
-  --bg-card: #FFFFFF;
-  --bg-card-hover: #F1F6FD;
-  --bg-header: #FFFFFF;
-  --bg-section-alt: #F1F5F9;
+  --bg-dark: #1A1A1A;
+  --bg-darker: #121212;
+  --bg-card: #1C1C1C;
+  --bg-card-hover: #252525;
+  --bg-header: #181818;
+  --bg-section-alt: #161616;
 
-  /* High Contrast Luxury Typography */
-  --text-white: #0F172A;
-  --text-cream: #1E293B;
-  --text-muted: #64748B;
-  --text-gold: #027CFF;
-  --text-blue: #027CFF;
+  --text-white: #F9F6F0;
+  --text-cream: #E8E4DC;
+  --text-muted: #A6A29A;
+  --text-gold: #D4AF37;
+  --text-blue: #D4AF37;
 
-  /* Light Theme Borders & Dividers */
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-gold: rgba(2, 124, 255, 0.25);
-  --border-blue: rgba(2, 124, 255, 0.25);
+  --border-subtle: rgba(212, 175, 55, 0.15);
+  --border-gold: rgba(212, 175, 55, 0.35);
+  --border-blue: rgba(212, 175, 55, 0.35);
+  --accent-glow: rgba(212, 175, 55, 0.4);
 
-  /* Fonts */
   --font-serif: 'Bodoni Moda', Georgia, serif;
   --font-cormorant: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-
-  /* Transitions */
   --transition: all 0.25s ease-in-out;
 }
 
-.property-showcase-card-link {
-  cursor: pointer;
-  outline: none;
+/* Theme 2: Heritage Crimson & Champagne Gold */
+html[data-theme="crimson-gold"] {
+  --avari-blue: #E6CA65;
+  --avari-blue-hover: #F2DC7D;
+  --avari-blue-light: #E6CA65;
+  --avari-blue-bright: #FAF0BE;
+  --avari-blue-dark: #D4B54B;
+  --avari-blue-tint: rgba(230, 202, 101, 0.14);
+  --avari-blue-border: rgba(230, 202, 101, 0.38);
+
+  --avari-gold: #E6CA65;
+  --avari-gold-hover: #F2DC7D;
+  --avari-gold-light: #E6CA65;
+  --avari-gold-dark: #D4B54B;
+
+  --bg-dark: #3B0B12;
+  --bg-darker: #4A0E17;
+  --bg-card: #56131D;
+  --bg-card-hover: #681A27;
+  --bg-header: #3D0B13;
+  --bg-section-alt: #3F0B13;
+
+  --text-white: #FAF7F2;
+  --text-cream: #EFEADF;
+  --text-muted: #CBB8BA;
+  --text-gold: #E6CA65;
+  --text-blue: #E6CA65;
+
+  --border-subtle: rgba(230, 202, 101, 0.18);
+  --border-gold: rgba(230, 202, 101, 0.38);
+  --border-blue: rgba(230, 202, 101, 0.38);
+  --accent-glow: rgba(230, 202, 101, 0.45);
 }
 
-.property-showcase-card-link:focus-visible {
-  border-color: var(--avari-blue);
-  box-shadow: 0 0 0 4px rgba(2, 124, 255, 0.16), 0 16px 45px rgba(2, 124, 255, 0.12);
+/* Theme 3: Midnight Sapphire & Pale Gilt */
+html[data-theme="sapphire-gold"] {
+  --avari-blue: #DFBA73;
+  --avari-blue-hover: #ECD194;
+  --avari-blue-light: #DFBA73;
+  --avari-blue-bright: #F5E5C0;
+  --avari-blue-dark: #C9A35B;
+  --avari-blue-tint: rgba(223, 186, 115, 0.14);
+  --avari-blue-border: rgba(223, 186, 115, 0.38);
+
+  --avari-gold: #DFBA73;
+  --avari-gold-hover: #ECD194;
+  --avari-gold-light: #DFBA73;
+  --avari-gold-dark: #C9A35B;
+
+  --bg-dark: #060F1E;
+  --bg-darker: #0A192F;
+  --bg-card: #112240;
+  --bg-card-hover: #1B3054;
+  --bg-header: #071325;
+  --bg-section-alt: #0D1F38;
+
+  --text-white: #F0F4F8;
+  --text-cream: #D9E2EC;
+  --text-muted: #8892B0;
+  --text-gold: #DFBA73;
+  --text-blue: #DFBA73;
+
+  --border-subtle: rgba(223, 186, 115, 0.18);
+  --border-gold: rgba(223, 186, 115, 0.38);
+  --border-blue: rgba(223, 186, 115, 0.38);
+  --accent-glow: rgba(223, 186, 115, 0.45);
 }
 
-.property-showcase-card-link .property-details-box {
-  position: relative;
+/* Theme 4: Imperial Emerald & Warm Bronze */
+html[data-theme="emerald-bronze"] {
+  --avari-blue: #C29B38;
+  --avari-blue-hover: #E2BB56;
+  --avari-blue-light: #C29B38;
+  --avari-blue-bright: #F0D586;
+  --avari-blue-dark: #A68128;
+  --avari-blue-tint: rgba(194, 155, 56, 0.14);
+  --avari-blue-border: rgba(194, 155, 56, 0.38);
+
+  --avari-gold: #C29B38;
+  --avari-gold-hover: #E2BB56;
+  --avari-gold-light: #C29B38;
+  --avari-gold-dark: #A68128;
+
+  --bg-dark: #0A2118;
+  --bg-darker: #0F2E22;
+  --bg-card: #174030;
+  --bg-card-hover: #1F503E;
+  --bg-header: #0B241A;
+  --bg-section-alt: #0C271D;
+
+  --text-white: #F5EFEB;
+  --text-cream: #E5DCD5;
+  --text-muted: #97A89F;
+  --text-gold: #C29B38;
+  --text-blue: #C29B38;
+
+  --border-subtle: rgba(194, 155, 56, 0.18);
+  --border-gold: rgba(194, 155, 56, 0.38);
+  --border-blue: rgba(194, 155, 56, 0.38);
+  --accent-glow: rgba(194, 155, 56, 0.45);
 }
 
-.property-showcase-card-link .property-details-box::after {
-  position: absolute;
-  right: 24px;
-  top: 30px;
-  content: '↗';
-  color: #CBD5E1;
-  font-size: 1.2rem;
-  transition: var(--transition);
-}
-
-.property-showcase-card-link:hover .property-details-box::after,
-.property-showcase-card-link:focus-visible .property-details-box::after {
-  color: var(--avari-blue);
-  transform: translate(2px, -2px);
-}
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -87,13 +154,13 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-darker);
-  color: var(--text-cream);
+  background-color: var(--bg-darker) !important;
+  color: var(--text-cream) !important;
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -103,7 +170,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
   font-weight: 500;
-  color: #0F172A;
+  color: var(--text-white) !important;
   letter-spacing: 0;
 }
 
@@ -113,16 +180,16 @@ a {
 }
 
 /* -------------------------------------------------------------
-   SITE HEADER & NAVIGATION (LUXURY LIGHT THEME)
+   SITE HEADER & NAVIGATION (LUXURY THEME)
    ------------------------------------------------------------- */
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: #FFFFFF;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  background-color: var(--bg-header) !important;
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .header-top-bar {
@@ -130,29 +197,9 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 12px 32px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid var(--border-subtle);
   max-width: 1440px;
   margin: 0 auto;
-}
-
-.brand-emblem-container {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.luxury-loader-logo {
-  height: 110px;
-  width: auto;
-  object-fit: contain;
-  mix-blend-mode: screen;
-  filter: drop-shadow(0 0 25px var(--accent-glow));
-}
-
-.brand-logo-img {
-  height: 48px;
-  width: auto;
-  object-fit: contain;
 }
 
 .brand-title {
@@ -160,12 +207,12 @@ a {
   font-size: 1.55rem;
   font-weight: 700;
   letter-spacing: 0.09em;
-  color: #0F172A;
+  color: var(--text-white) !important;
   text-transform: uppercase;
   line-height: 1.1;
 }
 .brand-title span {
-  color: var(--avari-blue);
+  color: var(--avari-gold) !important;
 }
 
 .brand-subtitle {
@@ -173,32 +220,24 @@ a {
   font-family: var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.22em;
-  color: #64748B;
+  color: var(--text-muted) !important;
 }
 
-.header-nav-bar {
-  max-width: 1440px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 28px;
-  padding: 0 32px;
-}
-
-.header-account-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 8px 12px;
-  border: 1px solid rgba(2, 124, 255, 0.3);
-  border-radius: 5px;
-  color: var(--avari-blue);
-  font-size: 0.73rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+.nav-item-link {
+  display: block;
+  padding: 14px 0;
+  font-size: 0.8rem;
+  font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-cream) !important;
+  border-bottom: 2px solid transparent;
   transition: var(--transition);
+}
+.nav-item-link:hover, .nav-item-link.active {
+  color: var(--avari-gold) !important;
+  border-bottom-color: var(--avari-gold) !important;
+}  transition: var(--transition);
 }
 
 .header-account-link:hover,
