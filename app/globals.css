@@ -237,7 +237,6 @@ a {
 .nav-item-link:hover, .nav-item-link.active {
   color: var(--avari-gold) !important;
   border-bottom-color: var(--avari-gold) !important;
-}  transition: var(--transition);
 }
 
 .header-account-link:hover,
