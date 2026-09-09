@@ -46,23 +46,24 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Center: Official Brand Logo with Light Blue Sail (Dark Text on Light Header) */}
+          {/* Center: Official High-Res Gold Sail Emblem */}
           <Link href="/" className="brand-emblem-container">
             <Image
-              src="/images/avari-logo-dark.png"
+              src="/images/avari-gold-emblem.png"
               alt="Avari Hotels & Resorts"
               width={92}
-              height={46}
+              height={50}
               priority
               style={{
                 height: '46px',
                 width: 'auto',
-                objectFit: 'contain'
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 2px 10px var(--accent-glow))'
               }}
             />
             <div>
               <div className="brand-title">
-                AVARI <span style={{ color: 'var(--avari-blue)' }}>HOTELS</span>
+                AVARI <span style={{ color: 'var(--avari-gold)' }}>HOTELS</span>
               </div>
               <div className="brand-subtitle">
                 Hospitality Perfected Since 1944
