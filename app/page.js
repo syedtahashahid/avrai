@@ -271,12 +271,12 @@ export default function HomePage() {
               marginTop: '15px'
             }}>
               <img 
-                src="/images/avari-logo-dark.png" 
+                src="/images/avari-gold-emblem.png" 
                 alt="Avari Hotels & Resorts"
                 style={{ 
                   height: '60px', 
                   width: 'auto', 
-                  filter: 'brightness(0) invert(1) drop-shadow(0 4px 8px rgba(0,0,0,0.4))' 
+                  filter: 'drop-shadow(0 4px 12px var(--accent-glow))' 
                 }}
               />
             </div>
