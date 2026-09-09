@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const currentTheme = process.env.NEXT_PUBLIC_THEME || 'sapphire-gold';
+  const currentTheme = process.env.NEXT_PUBLIC_THEME || 'emerald-bronze';
 
   return (
     <html lang="en" data-theme={currentTheme}>
