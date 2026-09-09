@@ -4,6 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:obsidian": "NEXT_PUBLIC_THEME=obsidian-gold next dev -p 3002",
+    "dev:crimson": "NEXT_PUBLIC_THEME=crimson-gold next dev -p 3003",
+    "dev:sapphire": "NEXT_PUBLIC_THEME=sapphire-gold next dev -p 3004",
+    "dev:emerald": "NEXT_PUBLIC_THEME=emerald-bronze next dev -p 3005",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

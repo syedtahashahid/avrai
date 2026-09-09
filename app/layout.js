@@ -1,6 +1,7 @@
 import './globals.css';
 import Header from './components/Header';
 import SiteFooter from './components/SiteFooter';
+import LuxuryLoader from './components/LuxuryLoader';
 
 export const metadata = {
   title: 'Avari Hotels & Resorts | Immersive Room Experiences & Showcase',
@@ -9,14 +10,17 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const currentTheme = process.env.NEXT_PUBLIC_THEME || 'obsidian-gold';
+
   return (
-    <html lang="en">
+    <html lang="en" data-theme={currentTheme}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="theme-color" content="#090C12" />
       </head>
       <body>
+        <LuxuryLoader />
         <Header />
         {children}
         <SiteFooter />
