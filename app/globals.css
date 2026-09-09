@@ -5,243 +5,49 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap');
 
-/* Theme 1: Sovereign Obsidian & Antique Gold (Default) */
-:root, html[data-theme="obsidian-gold"] {
-  --avari-blue: #D4AF37;
-  --avari-blue-hover: #E5BE48;
-  --avari-blue-light: #D4AF37;
-  --avari-blue-bright: #F3E5AB;
-  --avari-blue-dark: #C5A059;
-  --avari-blue-tint: rgba(212, 175, 55, 0.12);
-  --avari-blue-border: rgba(212, 175, 55, 0.35);
+:root {
+  /* Official Avari Light Blue Palette */
+  --avari-blue: #027CFF;
+  --avari-blue-hover: #0066D6;
+  --avari-blue-light: #027CFF;
+  --avari-blue-bright: #38A8FF;
+  --avari-blue-dark: #0056B3;
+  --avari-blue-tint: rgba(2, 124, 255, 0.08);
+  --avari-blue-border: rgba(2, 124, 255, 0.25);
 
-  --avari-gold: #D4AF37;
-  --avari-gold-hover: #E5BE48;
-  --avari-gold-light: #D4AF37;
-  --avari-gold-dark: #C5A059;
+  /* Legacy mappings to preserve compatibility */
+  --avari-gold: #027CFF;
+  --avari-gold-hover: #0066D6;
+  --avari-gold-light: #027CFF;
+  --avari-gold-dark: #0056B3;
 
-  --bg-dark: #1A1A1A;
-  --bg-darker: #121212;
-  --bg-card: #1C1C1C;
-  --bg-card-hover: #252525;
-  --bg-header: #181818;
-  --bg-section-alt: #161616;
+  /* Luxury Light Theme Backgrounds */
+  --bg-dark: #FFFFFF;
+  --bg-darker: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F1F6FD;
+  --bg-header: #FFFFFF;
+  --bg-section-alt: #F1F5F9;
 
-  --text-white: #F9F6F0;
-  --text-cream: #E8E4DC;
-  --text-muted: #A6A29A;
-  --text-gold: #D4AF37;
-  --text-blue: #D4AF37;
+  /* High Contrast Luxury Typography */
+  --text-white: #0F172A;
+  --text-cream: #1E293B;
+  --text-muted: #64748B;
+  --text-gold: #027CFF;
+  --text-blue: #027CFF;
 
-  --border-subtle: rgba(212, 175, 55, 0.15);
-  --border-gold: rgba(212, 175, 55, 0.35);
-  --border-blue: rgba(212, 175, 55, 0.35);
-  --accent-glow: rgba(212, 175, 55, 0.4);
+  /* Light Theme Borders & Dividers */
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-gold: rgba(2, 124, 255, 0.25);
+  --border-blue: rgba(2, 124, 255, 0.25);
 
+  /* Fonts */
   --font-serif: 'Bodoni Moda', Georgia, serif;
   --font-cormorant: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Transitions */
   --transition: all 0.25s ease-in-out;
-}
-
-/* Theme 2: Heritage Crimson & Champagne Gold */
-html[data-theme="crimson-gold"] {
-  --avari-blue: #E6CA65;
-  --avari-blue-hover: #F2DC7D;
-  --avari-blue-light: #E6CA65;
-  --avari-blue-bright: #FAF0BE;
-  --avari-blue-dark: #D4B54B;
-  --avari-blue-tint: rgba(230, 202, 101, 0.14);
-  --avari-blue-border: rgba(230, 202, 101, 0.38);
-
-  --avari-gold: #E6CA65;
-  --avari-gold-hover: #F2DC7D;
-  --avari-gold-light: #E6CA65;
-  --avari-gold-dark: #D4B54B;
-
-  --bg-dark: #3B0B12;
-  --bg-darker: #4A0E17;
-  --bg-card: #56131D;
-  --bg-card-hover: #681A27;
-  --bg-header: #3D0B13;
-  --bg-section-alt: #3F0B13;
-
-  --text-white: #FAF7F2;
-  --text-cream: #EFEADF;
-  --text-muted: #CBB8BA;
-  --text-gold: #E6CA65;
-  --text-blue: #E6CA65;
-
-  --border-subtle: rgba(230, 202, 101, 0.18);
-  --border-gold: rgba(230, 202, 101, 0.38);
-  --border-blue: rgba(230, 202, 101, 0.38);
-  --accent-glow: rgba(230, 202, 101, 0.45);
-}
-
-/* Theme 3: Midnight Sapphire & Pale Gilt */
-html[data-theme="sapphire-gold"] {
-  --avari-blue: #DFBA73;
-  --avari-blue-hover: #ECD194;
-  --avari-blue-light: #DFBA73;
-  --avari-blue-bright: #F5E5C0;
-  --avari-blue-dark: #C9A35B;
-  --avari-blue-tint: rgba(223, 186, 115, 0.14);
-  --avari-blue-border: rgba(223, 186, 115, 0.38);
-
-  --avari-gold: #DFBA73;
-  --avari-gold-hover: #ECD194;
-  --avari-gold-light: #DFBA73;
-  --avari-gold-dark: #C9A35B;
-
-  --bg-dark: #060F1E;
-  --bg-darker: #0A192F;
-  --bg-card: #112240;
-  --bg-card-hover: #1B3054;
-  --bg-header: #071325;
-  --bg-section-alt: #0D1F38;
-
-  --text-white: #F0F4F8;
-  --text-cream: #D9E2EC;
-  --text-muted: #8892B0;
-  --text-gold: #DFBA73;
-  --text-blue: #DFBA73;
-
-  --border-subtle: rgba(223, 186, 115, 0.18);
-  --border-gold: rgba(223, 186, 115, 0.38);
-  --border-blue: rgba(223, 186, 115, 0.38);
-  --accent-glow: rgba(223, 186, 115, 0.45);
-}
-
-/* Theme 4: Imperial Emerald & Warm Bronze */
-html[data-theme="emerald-bronze"] {
-  --avari-blue: #C29B38;
-  --avari-blue-hover: #E2BB56;
-  --avari-blue-light: #C29B38;
-  --avari-blue-bright: #F0D586;
-  --avari-blue-dark: #A68128;
-  --avari-blue-tint: rgba(194, 155, 56, 0.14);
-  --avari-blue-border: rgba(194, 155, 56, 0.38);
-
-  --avari-gold: #C29B38;
-  --avari-gold-hover: #E2BB56;
-  --avari-gold-light: #C29B38;
-  --avari-gold-dark: #A68128;
-
-  --bg-dark: #0A2118;
-  --bg-darker: #0F2E22;
-  --bg-card: #174030;
-  --bg-card-hover: #1F503E;
-  --bg-header: #0B241A;
-  --bg-section-alt: #0C271D;
-
-  --text-white: #F5EFEB;
-  --text-cream: #E5DCD5;
-  --text-muted: #97A89F;
-  --text-gold: #C29B38;
-  --text-blue: #C29B38;
-
-  --border-subtle: rgba(194, 155, 56, 0.18);
-  --border-gold: rgba(194, 155, 56, 0.38);
-  --border-blue: rgba(194, 155, 56, 0.38);
-  --accent-glow: rgba(194, 155, 56, 0.45);
-}
-
-/* ==========================================================================
-   BRANDED LUXURY PRELOADER COMPONENT STYLES
-   ========================================================================== */
-.luxury-loader-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 999999;
-  background-color: var(--bg-darker);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 1;
-  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: auto;
-}
-
-.luxury-loader-overlay.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.luxury-loader-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  text-align: center;
-}
-
-.luxury-loader-emblem-glow {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  animation: luxuryBreathing 1.5s ease-in-out infinite alternate;
-}
-
-.luxury-loader-logo {
-  height: 110px;
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 0 25px var(--accent-glow));
-}
-
-.luxury-loader-wordmark {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  color: var(--text-white);
-  text-transform: uppercase;
-}
-
-.luxury-loader-subtext {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.35em;
-  color: var(--avari-gold);
-  margin-top: 6px;
-}
-
-.luxury-loader-shimmer-bar {
-  width: 140px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, var(--avari-gold) 50%, transparent 100%);
-  animation: luxuryShimmer 1.5s ease-in-out infinite alternate;
-}
-
-@keyframes luxuryBreathing {
-  0% {
-    opacity: 0.65;
-    transform: scale(0.97);
-    filter: drop-shadow(0 0 10px var(--accent-glow));
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1.03);
-    filter: drop-shadow(0 0 35px var(--accent-glow));
-  }
-}
-
-@keyframes luxuryShimmer {
-  0% {
-    opacity: 0.35;
-    width: 80px;
-  }
-  100% {
-    opacity: 1;
-    width: 150px;
-  }
 }
 
 .property-showcase-card-link {
@@ -297,7 +103,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
   font-weight: 500;
-  color: var(--text-white);
+  color: #0F172A;
   letter-spacing: 0;
 }
 
@@ -307,16 +113,16 @@ a {
 }
 
 /* -------------------------------------------------------------
-   SITE HEADER & NAVIGATION (LUXURY THEME)
+   SITE HEADER & NAVIGATION (LUXURY LIGHT THEME)
    ------------------------------------------------------------- */
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: var(--bg-header);
-  border-bottom: 1px solid var(--border-subtle);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background-color: #FFFFFF;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
 }
 
 .header-top-bar {
@@ -324,7 +130,7 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 12px 32px;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   max-width: 1440px;
   margin: 0 auto;
 }
@@ -333,6 +139,14 @@ a {
   display: flex;
   align-items: center;
   gap: 14px;
+}
+
+.luxury-loader-logo {
+  height: 110px;
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 25px var(--accent-glow));
 }
 
 .brand-logo-img {
@@ -346,7 +160,7 @@ a {
   font-size: 1.55rem;
   font-weight: 700;
   letter-spacing: 0.09em;
-  color: var(--text-white);
+  color: #0F172A;
   text-transform: uppercase;
   line-height: 1.1;
 }
@@ -359,7 +173,7 @@ a {
   font-family: var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.22em;
-  color: var(--text-muted);
+  color: #64748B;
 }
 
 .header-nav-bar {
@@ -377,7 +191,7 @@ a {
   align-items: center;
   gap: 7px;
   padding: 8px 12px;
-  border: 1px solid var(--border-gold);
+  border: 1px solid rgba(2, 124, 255, 0.3);
   border-radius: 5px;
   color: var(--avari-blue);
   font-size: 0.73rem;
@@ -417,7 +231,7 @@ a {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--text-cream);
+  color: #334155;
   border-bottom: 2px solid transparent;
   transition: var(--transition);
 }
@@ -486,13 +300,13 @@ a {
   text-align: left;
   max-width: 520px;
   margin: 30px 0 40px 0;
-  background: var(--bg-card);
+  background: rgba(255, 255, 255, 0.93);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-gold);
+  border: 1px solid rgba(255, 255, 255, 0.95);
   padding: 34px 38px;
   border-radius: 12px;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
 }
 
 .hero-overhead-tag {
@@ -511,20 +325,20 @@ a {
   font-size: clamp(2.2rem, 4vw, 3.4rem);
   font-weight: 600;
   line-height: 1.15;
-  color: var(--text-white);
+  color: #0F172A;
   margin-bottom: 12px;
 }
 
 .hero-sub-text {
   font-size: 1.05rem;
   font-weight: 400;
-  color: var(--text-muted);
+  color: #475569;
   line-height: 1.6;
   margin-bottom: 24px;
 }
 
 /* -------------------------------------------------------------
-   THE FLOATING BOOKING BAR (LUXURY THEME)
+   THE FLOATING BOOKING BAR (LIGHT THEME LUXURY)
    ------------------------------------------------------------- */
 
 .booking-bar-wrapper {
@@ -546,11 +360,11 @@ a {
   max-width: calc(100% - 32px);
   margin: 0 auto 14px;
   padding: 10px 18px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-gold);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(2, 124, 255, 0.22);
   border-radius: 6px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
-  color: var(--text-cream);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.12);
+  color: #475569;
   font-size: 0.74rem;
   line-height: 1.35;
 }
@@ -572,10 +386,10 @@ a {
 }
 
 .pc-booking-bar {
-  background: var(--bg-card);
-  border: 1px solid var(--border-gold);
+  background: #FFFFFF;
+  border: 1px solid rgba(2, 124, 255, 0.25);
   border-radius: 10px;
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 16px 45px rgba(15, 23, 42, 0.12);
   display: grid;
   grid-template-columns: 1.8fr 1.4fr 1.2fr 1fr;
   align-items: stretch;
@@ -594,7 +408,7 @@ a {
 
 .bk-segment {
   padding: 16px 22px;
-  border-right: 1px solid var(--border-subtle);
+  border-right: 1px solid #E2E8F0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -603,7 +417,7 @@ a {
   transition: var(--transition);
 }
 .bk-segment:hover {
-  background: var(--avari-blue-tint);
+  background: rgba(2, 124, 255, 0.04);
 }
 
 .bk-segment-label {
@@ -621,7 +435,7 @@ a {
 .bk-segment-value {
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--text-white);
+  color: #0F172A;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -629,7 +443,7 @@ a {
 
 .bk-segment-sub {
   font-size: 0.74rem;
-  color: var(--text-muted);
+  color: #64748B;
 }
 
 .bk-submit-btn {
@@ -653,7 +467,7 @@ a {
 .bk-submit-btn:hover {
   background: var(--avari-blue-hover);
   color: #FFF;
-  box-shadow: 0 6px 20px var(--accent-glow);
+  box-shadow: 0 6px 20px rgba(2, 124, 255, 0.4);
 }
 
 /* Dropdown Menu for Destination Picker */
@@ -662,10 +476,10 @@ a {
   top: calc(100% + 8px);
   left: 0;
   width: 360px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-gold);
+  background: #FFFFFF;
+  border: 1px solid rgba(2, 124, 255, 0.25);
   border-radius: 8px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.15);
   padding: 12px 0;
   z-index: 100;
 }

@@ -58,6 +58,7 @@ export default function Header() {
                 height: '46px',
                 width: 'auto',
                 objectFit: 'contain',
+                mixBlendMode: 'screen',
                 filter: 'drop-shadow(0 2px 10px var(--accent-glow))'
               }}
             />
